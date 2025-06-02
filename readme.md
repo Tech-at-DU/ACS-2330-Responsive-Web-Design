@@ -14,34 +14,33 @@ Students by the end of the course will be able to ...
 
 ## Schedule
 
-**Course Dates:** Wednesday, March 20 – Wednesday, May 8, 2024 (7 weeks)
+**Course Dates:** Monday, August 28 – Wednesday, October 10, 2025 (7 weeks)
 
-**Class Times:** Monday and Wednesday at 9:30 AM – 12:15 PM (15 class sessions)
+**Class Times:** Monday and Wednesday at 4:00 PM – 6:45 PM (15 class sessions)
 
 | Class |     Date    |                 Topics                  |
 |:-----:|:-----------:|:---------------------------------------:|
-|  1    | Wed, Mar 20 | [Introduction to Responsive Web Design] |
 |  -    | Week 1 - Wire Framing |                -              |
-|  2    | Mon, Mar 25 | [Creating Wire Frames] |                |
-|  3    | Wed, Mar 27 | [Media Queries]                         |
+|  1    | Mon, Aug 25 | [Introduction to Responsive Web Design] |
+|  2    | Wed, Aug 27 | [Creating Wire Frames] |                |
 |  -    | Week 2 - Media Queries |               -              | 
-|  4    | Mon, Apr  1 | Cesar Chavez Day Campus Holiday         |
-|  5    | Wed, Apr  3 | [Introduction to Flexbox and responsive units] |
+|  3    | Mon, Sep  1 | [Media Queries]                         |
+|  4    | Wed, Sep  3 | Cesar Chavez Day Campus Holiday         |
 |  -    | Week 3 - Flex Box and Grid |           -              |
-|  6    | Mon, Apr  8 | [CSS Grid] [Responsive Grid Challenge 1] |
-|  7    | Wed, Apr 10 | [Responsive Grid Challenge 2]           |
+|  5    | Mon, Sep  8 | [Introduction to Flexbox and responsive units] |
+|  6    | Wed, Sep 10 | [CSS Grid] [Responsive Grid Challenge 1] |
 |  -    | Week 4 - Accessibility |               -              |
-|  8    | Mon, Apr 15 | [Accessibility and Inclusive Design]    |
-|  9    | Wed, Apr 17 | [Accessibility part 2]                  |
+|  7    | Mon, Sep 15 | [Responsive Grid Challenge 2]           |
+|  8    | Wed, Sep 17 | [Accessibility and Inclusive Design]    |
 |  -    | Week 5 - Tailwind Responsive |         -              |
-| 10    | Mon, Apr 22 | [Mobile First Dev]  [Project 2]         |
-| 13    | Wed, Apr 24 | UX Testing [Tailwind responsive]        |
+|  9    | Mon, Sep 22 | [Accessibility part 2]                  |
+| 10    | Wed, Sep 24 | [Mobile First Dev]  [Project 2]         |
 |  -    | Week 6 - Responsive UI |               -              |
-| 14    | Mon, Apr 29 | Lab                                     |
-| 14    | Wed, May  1 | TBD                                     |
+| 13    | Mon, Sep 29 | UX Testing [Tailwind responsive]        |
+| 14    | Wed, Oct  1 | Lab                                     |
 |  -    | Week 7      |                          -              |
-| 15    | Mon, May  6 | Final Assessment                        |
-| 16    | Wed, May  8 | Final Presentations                     |
+| 14    | Mon, Oct  6 | Final Assessment                        |
+| 15    | Wed, Oct  8 | Final Presentations                     |
 
 [Introduction to Responsive Web Design]: ./class-1.md
 [Creating Wire Frames]: ./class-2.md
