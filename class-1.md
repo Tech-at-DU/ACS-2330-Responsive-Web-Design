@@ -69,7 +69,10 @@ By following these steps, you can create a clear and effective wireframe for you
 
 Tips and guidelines to help you draw a wireframe:
 
-1. **Start with a clear goal**: Before starting, establish a clear goal and purpose for your wireframe. What do you want to achieve with it? What are the most important elements you need to include?
+1. **Start with a clear goal**: Before starting, establish a clear goal and purpose for your wireframe. What do you want to achieve with it? What are the most important elements you need to include? These should be something like: 
+  - Shows the most relavant and important information first. 
+  - Navigation, and other options are clearly labeled and easy to find, and are understandable at a glance.
+  - Some information may have to move on the mobile version, and may not be immediately visible. Ask your self how this affects the a vistors experience using the site? 
 2. **Keep it simple**: Wireframes are not meant to be detailed designs but rather a rough sketch of the website's structure and layout. Keep it simple and focus on the overall layout and functionality of the site.
 3. **Use basic shapes**: Use simple shapes, such as rectangles, circles, and lines, to represent the different elements of the website, including text, images, and buttons.
 4. **Consider content hierarchy**: Pay attention to the order and placement of the content on the page. Make sure that the most important content is easily visible and accessible to the user.
