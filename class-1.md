@@ -28,6 +28,14 @@ Your job is to analyze these websites and identify any responsive design techniq
 
 Your group will present your findings to the class and discuss the strengths and weaknesses of the website's responsive design.
 
+> **Its best to view a site on a mobile device to really see how it works on mobile devices!** If you don't have a mobile device you can simulate a mobile browsing experience in Chrome or Safari using the Responsive mode. 
+
+- Compare the sites above on both desktop and mobile, side by side! 
+- Look for the same elements, like menus, and content boxes, on both desktop and mobile. Ask yourself how these have changed between the two views. Is anything missing on one view or the other? 
+- Takes notes, sketch the changes in layout with a simple wireframe.
+
+Do these things! This is important for studying and understanding how these sites are working on desktop and mobile!
+
 ## Approaches to responsive design
 Responsive design is a design approach that aims to create websites that can adapt to different screen sizes and devices. The principles of responsive design involve using flexible layouts, fluid images, and media queries to ensure that the website looks good and functions well on any device.
 
@@ -139,4 +147,3 @@ Stretch goal:
 | Quality | Drawings are poor quality, sloppy, or hard to read, or contain extraneous details | drawings are clear and concise | well presented and the project is clearly identifiable | 
 | User stories | Has less than three user stories, or the user stories do not show clear who, what, and why. | User stories are well written | User stories provide actionable direction for software development team |
 | Outline | Outline nonexistent or missing elements | Outline contains everything found in the site, is clearly labeled, and shows hierarchy | This outline includes details describing interaction and functionality |
-
