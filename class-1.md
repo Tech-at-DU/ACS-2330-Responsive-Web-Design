@@ -36,6 +36,13 @@ Your group will present your findings to the class and discuss the strengths and
 
 Do these things! This is important for studying and understanding how these sites are working on desktop and mobile!
 
+Can you find these things: 
+- Text changes size
+- Number of columns changes
+- Flexible boxes
+- Elements are removed or moved
+- Chand from horizontal to vertical layout
+
 ## Approaches to responsive design
 Responsive design is a design approach that aims to create websites that can adapt to different screen sizes and devices. The principles of responsive design involve using flexible layouts, fluid images, and media queries to ensure that the website looks good and functions well on any device.
 
