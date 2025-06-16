@@ -25,18 +25,18 @@ Students by the end of the course will be able to ...
 |  2    | Thu, Aug 28 | [Creating Wire Frames] |                |
 |  -    | Week 2 - Media Queries |               -              | 
 |  3    | Tue, Sep  2 | [Media Queries]                         |
-|  4    | Thu, Sep  4 | Cesar Chavez Day Campus Holiday         |
+|  4    | Thu, Sep  4 | [Introduction to Flexbox and responsive units] |
 |  -    | Week 3 - Flex Box and Grid |           -              |
-|  5    | Tue, Sep  9 | [Introduction to Flexbox and responsive units] |
-|  6    | Thu, Sep 11 | [CSS Grid] [Responsive Grid Challenge 1] |
+|  5    | Tue, Sep  9 | [CSS Grid] [Responsive Grid Challenge 1] |
+|  6    | Thu, Sep 11 | [Responsive Grid Challenge 2] |
 |  -    | Week 4 - Accessibility |               -              |
-|  7    | Tue, Sep 16 | [Responsive Grid Challenge 2]           |
-|  8    | Thu, Sep 18 | [Accessibility and Inclusive Design]    |
+|  7    | Tue, Sep 16 | [Accessibility and Inclusive Design]    |
+|  8    | Thu, Sep 18 | [Accessibility part 2]                  |
 |  -    | Week 5 - Tailwind Responsive |         -              |
-|  9    | Tue, Sep 23 | [Accessibility part 2]                  |
-| 10    | Thu, Sep 25 | [Mobile First Dev]  [Project 2]         |
+|  9    | Tue, Sep 23 | [Mobile First Dev]  [Project 2]         |
+| 10    | Thu, Sep 25 | UX Testing                              |
 |  -    | Week 6 - Responsive UI |               -              |
-| 13    | Tue, Sep 30 | UX Testing [Tailwind responsive]        |
+| 13    | Tue, Sep 30 | [Tailwind responsive]                   |
 | 14    | Thu, Oct  2 | Lab                                     |
 |  -    | Week 7      |                          -              |
 | 14    | Tue, Oct  7 | Final Assessment                        |
