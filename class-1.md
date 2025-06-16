@@ -69,8 +69,8 @@ Wire framing a web site involves creating a visual representation of the website
 2. **Determine the website's structure**: The structure of the website includes the pages and sections that make up the website. Start by creating a list of the pages you want to include on your website, and then organize them into a logical structure.
 3. **Sketch out the wireframe**: Once you have determined the website's structure, sketch out the wireframe on paper or using a digital tool. You can use a simple pen and paper, or use online wireframing tools like Figma, Adobe XD, or Sketch. A wireframe should include the page layout, including the placement of content, images, and navigation elements.
 4. **Keep it simple**: Keep the wireframe simple and avoid getting bogged down in design details at this stage. The purpose of the wireframe is to establish the website's layout and structure, not to create a final design.
-  - **Draft**, don't draw.
-  - **Sketch**, don't illustrate
+    - **Draft**, don't draw.
+    - **Sketch**, don't illustrate
 5. **Test and refine**: Once you have created a wireframe, test it with users or stakeholders to get feedback. Use this feedback to refine the wireframe until you have a final version that meets the website's goals and user needs.
 
 By following these steps, you can create a clear and effective wireframe for your website. Remember that wireframing is an iterative process, so be prepared to revise and refine your wireframe as needed.
