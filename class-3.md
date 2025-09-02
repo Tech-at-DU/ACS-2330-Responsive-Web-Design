@@ -104,7 +104,7 @@ Here are some commonly used media features in Media Queries Level 5:
 7. **prefers-reduced-motion**: This feature applies styles based on the user's preference for reduced motion on the device.
 8. **prefers-color-scheme**: This feature applies styles based on the user's preferred color scheme, either light or dark.
 9. **hover**: This feature applies styles based on whether the device supports hover interactions.
-10 **pointer**: This feature applies styles based on the primary input mechanism of the device, such as coarse for touchscreens or fine for mouse-driven devices.
+10. **pointer**: This feature applies styles based on the primary input mechanism of the device, such as coarse for touchscreens or fine for mouse-driven devices.
 
 It's important to note that support for these media features may vary across devices and browsers, so it's always a good idea to test your styles across different platforms to ensure they work as intended.
 
