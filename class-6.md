@@ -106,12 +106,12 @@ Answer these questions on GradeScope:
 
 ## Challenge: Accessibility Review!
 
-Review and evaluate the accessibility of a website of your choice. This can be any site you like, a site you use everyday is preferable, buy soap and fuzzy slippers on Amazon, check out cat pictures on reddit, order Airpods Max on the Apple store. 
+Review and evaluate the accessibility of your responsive website. 
 
 - Browse the site with the keyboard and screen reader
 - Run an accessiblity review using the tools above
 
-Repeat the process with your SFPOPOS site. 
+Using Lighthouse and WAVE improve your site trying to solve all of the accessibility recommendations, and get the highest scores possible. 
 
 - Browser the website **with your keyboard** and a screen reader. This is a tedious and annoying process. Do not give up or skip this out of frustration. Sympathize with the segment of the population that does this everyday. 
 - While using the screent identify the areas that can be improved. Look at:
