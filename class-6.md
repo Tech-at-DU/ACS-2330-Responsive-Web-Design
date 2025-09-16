@@ -94,7 +94,7 @@ You will also check the color contrast for colors on the site. Do this for any b
 
 To really get a feel for how people with disabilities use a computer try the screen reader. 
 
-- Safari: https://www.apple.com/voiceover/info/guide/_1121.html
+- Safari: https://support.apple.com/guide/voiceover/welcome/mac
 - Chrome: https://support.google.com/accessibility/answer/7031755?hl=en
 
 ## Challenge: What is Accessibility?
