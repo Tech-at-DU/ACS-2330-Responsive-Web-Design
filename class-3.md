@@ -35,14 +35,14 @@ The `@media` rule in CSS can be used to apply different styles based on a variet
 2. **screen**: This applies to devices with a screen, such as desktop monitors, laptops, tablets, and smartphones.
 3. **print**: This applies to printed documents and pages.
 
-That's right media defines "print" as a type. If you were to print your web page you could apply styles specifically for that situation! 
+That's right media defines "print" as a type. If you were to print your web page you could apply styles specifically for print! 
 
 Let's do an example. Imagine you made an online resume. It's got color and images, it's really fancy. It wouldn't look great in print, the fonts would be too large, the pictures would make everything spill over on to multiple pages, and the background color would make the text hard to read, and use up a recruiters ink cartriges! 
 
-We migth fix it like this: 
+We might fix it like this: 
 
 ```CSS
-/* imagine all of the facny styles here */
+/* imagine all of the fancy styles here */
 body {
   background-color: tomato;
   color: beige;
@@ -53,7 +53,7 @@ body {
 These styes only apply when the media type 
 is print!
 NOTE! All of the styles above also apply! 
-In this case they are over written! 
+These overwrite some of the above styles. 
 */
 @media print {
   body {
@@ -64,7 +64,7 @@ In this case they are over written!
 }
 ```
 
-The `@media` block contains styles that only applied when the media type ands features match. Otherwise the style in the block are not used. 
+The `@media` block contains styles that are only applied when the media type and features match. Otherwise the style in the block are not used. 
 
 This means that the `@media` block should be placed _after_ your other styles! In this way these rules will overwrite the rules that came before!
 
@@ -89,7 +89,7 @@ What does that mean? Above, the `@media` query defines the media type as `print`
 }
 ```
 
-In this example the media type is screen `max-width` is a feature. The rules in the block only apply when the media type is screen **and** the width of the screen is 480px or smaller (maximum width of 480px.) 
+In this example the media type is screen, and `max-width` is a *feature*. The rules in the block only apply when the media type is screen **and** the width of the screen is 480px or smaller (`max-width: 480px`). 
 
 This rule applies to smaller screens and doesn't apply to larger screens! **The CSSWG is going to remove media types in the future and we will only use media features!**
 
@@ -104,7 +104,7 @@ Here are some commonly used media features in Media Queries Level 5:
 7. **prefers-reduced-motion**: This feature applies styles based on the user's preference for reduced motion on the device.
 8. **prefers-color-scheme**: This feature applies styles based on the user's preferred color scheme, either light or dark.
 9. **hover**: This feature applies styles based on whether the device supports hover interactions.
-10 **pointer**: This feature applies styles based on the primary input mechanism of the device, such as coarse for touchscreens or fine for mouse-driven devices.
+10. **pointer**: This feature applies styles based on the primary input mechanism of the device, such as coarse for touchscreens or fine for mouse-driven devices.
 
 It's important to note that support for these media features may vary across devices and browsers, so it's always a good idea to test your styles across different platforms to ensure they work as intended.
 
@@ -112,21 +112,23 @@ It's important to note that support for these media features may vary across dev
 
 Responsive web design is a design approach that creates websites that look good and function well on all devices and screen sizes. It uses flexible layouts, images, and typography that adapt to the user's screen size and orientation. This ensures that the website content is accessible and easy to read, regardless of the user's device.
 
-In short responsive sites are sites that respond to the device where they are viewed. 
+In short, responsive sites are sites that respond to the device where they are viewed. 
 
 ## How do you make sites responsive? 
 
-Websites are almost always media screen. The big difference is the features. The most common method used today is to use the width of the screen. 
+Websites are always media screen. The big difference between screens is the features. The most important feature is the width of the screen. 
 
-Compare your phone to the your desktop. I have an iPhone 11 pro. The screen is 5.8" diagonally, screen resolution is 1125 x 2436 pixels but it is 375 x 812 points. 
+Compare your phone to the your desktop. I have an iPhone 11 pro. The screen is 5.8" diagonally, screen resolution is 1125 x 2436 pixels but it is 375 x 812 points (actual pixels vs points). 
 
-In iOS, the screen size is measured in points rather than pixels. The iPhone 11 Pro has a screen size of 375 points x 812 points, which is equivalent to 1125 x 2436 pixels at a 3x scale factor (which is the device's native scale factor).
+On iOS, the screen size is measured in points rather than pixels. The iPhone 11 Pro has a screen size of 375 points x 812 points, which is equivalent to 1125 x 2436 pixels at a 3x scale factor (which is the device's native scale factor).
 
-Pixels are the smallest unit of measurement on a digital screen, while points are a relative unit of measurement used in digital design. Pixels are fixed in number, while points can vary depending on the device's pixel density. Points are used by designers to ensure consistent sizing across different devices.
+Pixels are the smallest unit of measurement on a digital screen, while points are a relative unit of measurement *used in digital design*. Pixels are fixed in number, while points can vary depending on the device's pixel density. Points are used by designers to ensure consistent sizing across different devices.
 
-The width of the iPhone 11 Pro in CSS pixels would be 375px. This is based on the device's screen size of 375 points, which, at the device's native scale factor of 3x, translates to 1125 physical pixels.
+The width of the iPhone 11 Pro in CSS pixels would be 375px. This is based on the device's screen size of 375 points, which, at the device's native scale factor of x3, translates to 1125 physical pixels.
 
-I'm writing this on my MacBook Pro which has a screen size of: 2880 × 1800. Which is a lot wider than the iPhone 11. The Desktop is wider in CSS pixels and all of the pixels are larger. The macbook has twice the number of pixels but the pixels on the phone are smaller. 
+I'm writing this on my MacBook Pro which has a screen size of: 2880 × 1800. Which is a lot wider than the iPhone 11. The Desktop is wider in CSS pixels and all of the pixels are larger. The macbook has twice the number of pixels but the pixels on the phone are smaller.
+
+Points are always 1/72". A point on the iPhone, is the same size as a point on the MacBook, even though the physical pixels are different!
 
 Remember that media query you looked at earlier? 
 
@@ -172,7 +174,7 @@ Here are common breakpoints used in responsive web design, based on common scree
 - **992px** - common screen width for small laptops and desktops
 - **1200px** - common screen width for larger laptops and desktops
 
-Note that these are just examples, and the specific breakpoints used may vary depending on the design of the website and the target audience. 
+These are just examples, and the specific breakpoints used may vary depending on the design of the website and the target audience. 
 
 In general, breakpoints should be chosen based on the most common screen sizes of the devices that the website is likely to be viewed on, with additional breakpoints added as needed to accommodate less common sizes or specific design requirements.
 
@@ -213,9 +215,9 @@ Here are some examples.
 }
 ```
 
-Note that these are just examples, and you can also use `min-width` instead of `max-width` to define breakpoints for larger screens. Additionally, you can combine media features to create more complex media queries that target specific devices or conditions.
+These are just examples, and you can also use `min-width` instead of `max-width` to define breakpoints for larger screens. Additionally, you can combine media features to create more complex media queries that target specific devices or conditions.
 
-Note that the specific devices that fit each media query may vary depending on their screen resolution and pixel density, as well as the orientation of the device. Additionally, users may resize their browser windows or use other devices with different screen sizes, so it's important to test your website's responsiveness across a range of devices and screen sizes.
+Specific devices that fit each media query may vary depending on their screen resolution and pixel density, as well as the orientation of the device. Additionally, users may resize their browser windows or use other devices with different screen sizes, so it's important to test your website's responsiveness across a range of devices and screen sizes.
 
 ## Testing Media Queries and Breakpoints
 
@@ -229,9 +231,7 @@ Start with this:
 }
 ```
 
-This example will just set the background color to a bright color. You can usde this idea to let you know when your media query is in effect. 
-
-Test this in the browser. 
+This sets the background color to a bright color when the screen is 480px or smaller. You can use this idea to let you know when your media query is in effect.
 
 **In Safari:** 
 
