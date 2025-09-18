@@ -98,8 +98,6 @@ Tips and guidelines to help you draw a wireframe:
 ## In Class Challenge (60 mins)
 Using one of the tools above start mocking up the SFPOPOS Site. 
 
-
-
 ## Homework challenge
 You are going to create wireframes for the SFPOPOS site. Before drawing any boxes you need to create an outline and some user stories. 
 

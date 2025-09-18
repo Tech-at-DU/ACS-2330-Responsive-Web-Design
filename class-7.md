@@ -179,8 +179,21 @@ NOTE! For text font size and weight matter. Smaller fonts, and lighter weight fo
 
 ## Challenge
 
-There are three challenges for this week. These will wrap up the SFPOPOS accessibility update. 
+Update your responsive site using the accessibility best practices. 
 
-- Update the semnatic markup on the site. Replace existing generic markup with semantic markup where appropriate. 
-- Add ARIA attributes to elements with the goal of improving accessibility and assitive support. These attributes should describe the elements, their function on the page, and provide descriptive text. 
-- Check the color contrast. Use the WebAIM color constrast checker and make sure your site passes the contrast check.
+### Accessibility Best Practices
+
+1. **Use semantic HTML** – Headings, lists, buttons, and forms should use proper tags.
+2. **Provide text alternatives** – Add meaningful `alt` text for images.
+3. **Ensure keyboard accessibility** – All functionality should work without a mouse (e.g., tab navigation).
+4. **Maintain color contrast** – Text should have a minimum 4.5:1 contrast ratio against backgrounds.
+5. **Don’t rely on color alone** – Use text, icons, or patterns in addition to color cues.
+6. **Use clear, descriptive links** – Avoid “click here” or “read more.”
+7. **Provide labels and instructions** – Forms must have visible labels or ARIA labels.
+8. **Use headings logically** – Structure content in order (`h1`, then `h2`, etc.).
+9. **Provide captions/transcripts** – For videos and audio.
+10. **Avoid flashing/strobing content** – To prevent seizures.
+11. **Make text resizable** – Support zoom without breaking layout.
+12. **Test with screen readers and tools** – NVDA, VoiceOver, Lighthouse, WAVE.
+
+
