@@ -22,15 +22,25 @@ Most often on mobile content will maximize the width taking up as much horizonta
 
 Pixels on mobile are generally smaller, or you could think about this as higher pixel density, in other there are more pixles in a smaller area. This means that while screens are crisp and look great everything on mobile is smaller. 
 
-The input experience on mobile devices is unique, touch based. If you think about your finger as the cursor notice that it often covers thing that you are interacting with. There is no hover effect on mobile. The cursor on the desktop is 16 by 16 pixels, the tip of your finger takes up rough a 40 pixel circle. On mobile all interaction happens on a smaller screen with a much larger and less accurate pointing device! 
+The input experience on mobile devices is unique, touch based. If you think about your finger as the cursor, notice that it often covers the thing that you are interacting with. There is no hover effect on mobile. The cursor on the desktop is 16 by 16 pixels, the tip of your finger takes up rough a 40 pixel diameter circle. On mobile all interaction happens on a smaller screen with a much larger and less accurate pointing device! 
+
+On mobile interactive elements need to be obvious and easily identified, and their purpose easily deduced from their appearance. 
 
 ## Desktop design considerations
 
 On the desktop screens are larger. While we stack things vertically there is added space available to display things side by side. 
 
+The pointing device is the unobtrusive and very accurate. We also get visual feedback when the cursor is over an intereactive element. 
+
 ## Mobile First Design 
 
 Mobile first design is a design strategy that prioritizes the mobile user experience over the desktop experience. It involves designing for mobile devices first and then scaling up to larger screens. This approach is beneficial for ensuring that users can easily access and interact with content and features on their mobile devices. It also helps to create a consistent user experience across different devices and screen sizes, making it more intuitive and user-friendly. By prioritizing mobile design, businesses and organizations can offer a better user experience to their audience, leading to higher engagement and satisfaction.
+
+**Mobile first design prioritizes the essenctial information and interactions.**
+
+### Why Mobile First? 
+
+A mobile first approach is important because a majority of the world access the internet using a mobile device. 
 
 ## UX Testing
 
