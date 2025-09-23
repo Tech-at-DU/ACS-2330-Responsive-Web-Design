@@ -36,7 +36,7 @@ The pointing device is the unobtrusive and very accurate. We also get visual fee
 
 Mobile first design is a design strategy that prioritizes the mobile user experience over the desktop experience. It involves designing for mobile devices first and then scaling up to larger screens. This approach is beneficial for ensuring that users can easily access and interact with content and features on their mobile devices. It also helps to create a consistent user experience across different devices and screen sizes, making it more intuitive and user-friendly. By prioritizing mobile design, businesses and organizations can offer a better user experience to their audience, leading to higher engagement and satisfaction.
 
-**Mobile first design prioritizes the essenctial information and interactions.**
+**Mobile first design prioritizes the essential information and interactions.**
 
 ### Why Mobile First? 
 
