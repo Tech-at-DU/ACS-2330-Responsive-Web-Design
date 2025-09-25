@@ -34,7 +34,7 @@ Students by the end of the course will be able to ...
 |  8    | Thu, Sep 18 | [Accessibility part 2]                  |
 |  -    | Week 5 - Tailwind Responsive |         -              |
 |  9    | Tue, Sep 23 | [Mobile First Dev]  [Project 2]         |
-| 10    | Thu, Sep 25 | UX Testing                              |
+| 10    | Thu, Sep 25 | [UX Testing]                              |
 |  -    | Week 6 - Responsive UI |               -              |
 | 13    | Tue, Sep 30 | [Tailwind responsive]                   |
 | 14    | Thu, Oct  2 | Lab                                     |
@@ -58,6 +58,8 @@ Students by the end of the course will be able to ...
 [Mobile First Dev]: ./class-8.md
 [Tailwind responsive]: ./class-9.md
 [Project 2]: ./project-2.md
+
+[UX Testing]: ./class-10.md
 
 [Lab]: https://www.uxpin.com/studio/blog/user-interface-elements-every-designer-should-know/
 
