@@ -4,6 +4,10 @@ Follow these steps to test your project with real users. The goal is to collect 
 
 ---
 
+## UX Test
+
+---
+
 ### 1. Prepare - Test provider
 
 * Write down **3–5 key tasks** you want users to try (e.g., “Find the checkout button”). The tasks should simple and focused one feature of your site. 
@@ -69,3 +73,9 @@ For each task, write down:
 ---
 
 👉 **Remember:** The value of UX testing is not “making it perfect,” but discovering **real evidence** to guide your next design decision.
+
+---
+
+## Submit your results
+
+Compile nd submit your UX Test results to Gradescope. Answer the questions there. 
