@@ -67,16 +67,16 @@ This is different from defining a single class that has all of the features. Som
 
 Tailwind has a lot of classes. Too many to describe. 
 
-1. Layout - Classes that help with structuring and positioning elements, such as container, grid, flex, float, clear, and display classes.
-2. Typography - Classes that help with styling text and fonts, such as font, text, leading, tracking, and whitespace classes.
-3. Backgrounds - Classes that help with setting background colors and images, such as bg, bg-opacity, bg-gradient-to, and bg-blur classes.
-4. Borders - Classes that help with styling borders, such as border, border-opacity, border-solid, border-dashed, and border-double classes.
-5. Tables - Classes that help with styling tables, such as a table, table-auto, table-fixed, and table-caption classes.
-6. Forms - Classes that help with styling form elements, such as form, input, select, checkbox, radio, label, and placeholder classes.
-7. Effects - Classes that help with adding effects, such as shadow, opacity, transition, transform, and scale classes.
-8. Interactivity - Classes that help with adding interactivity, such as hover, focus, active, and group-hover classes.
-9. SVG - Classes that help with styling SVG elements, such as fill-current and stroke-current classes.
-10. Accessibility - Classes that help with making content more accessible, such as sr-only, not-sr-only, focus-within, and focus-visible classes.
+1. **Layout** - Classes that help with structuring and positioning elements, such as container, grid, flex, float, clear, and display classes.
+2. **Typography** - Classes that help with styling text and fonts, such as font, text, leading, tracking, and whitespace classes.
+3. **Backgrounds** - Classes that help with setting background colors and images, such as bg, bg-opacity, bg-gradient-to, and bg-blur classes.
+4. **Borders** - Classes that help with styling borders, such as border, border-opacity, border-solid, border-dashed, and border-double classes.
+5. **Tables** - Classes that help with styling tables, such as a table, table-auto, table-fixed, and table-caption classes.
+6. **Forms** - Classes that help with styling form elements, such as form, input, select, checkbox, radio, label, and placeholder classes.
+7. **Effects** - Classes that help with adding effects, such as shadow, opacity, transition, transform, and scale classes.
+8. **Interactivity** - Classes that help with adding interactivity, such as hover, focus, active, and group-hover classes.
+9. **SVG** - Classes that help with styling SVG elements, such as fill-current and stroke-current classes.
+10. **Accessibility** - Classes that help with making content more accessible, such as sr-only, not-sr-only, focus-within, and focus-visible classes.
 
 Note that this list is not exhaustive and there may be additional categories or classes within each category.
 
