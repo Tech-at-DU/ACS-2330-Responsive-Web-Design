@@ -230,7 +230,175 @@ use the classes `flex flex-col h-screen justify-between`. For example:
 </main>
 ```
 
-## Challenge
+## Responsive Tailwind Examples
+
+Try these examples and apply them to your work. 
+
+### 1. Breakpoints in practice
+
+```html
+<p class="text-sm md:text-lg lg:text-2xl">
+  Responsive text: small on mobile, bigger on tablets, largest on desktops.
+</p>
+```
+
+### 2. Stack to row
+
+```html
+<div class="flex flex-col md:flex-row gap-4">
+  <div class="bg-blue-300 p-4">Box 1</div>
+  <div class="bg-blue-400 p-4">Box 2</div>
+  <div class="bg-blue-500 p-4">Box 3</div>
+</div>
+```
+
+### 3. Hide and show
+
+```html
+<div>
+  <p class="block md:hidden text-red-600">Shown only on mobile</p>
+  <p class="hidden md:block text-green-600">Shown only on desktop</p>
+</div>
+```
+
+### 4. Responsive Navbar
+
+```html
+<nav class="bg-gray-800 text-white p-4 flex flex-col md:flex-row justify-between">
+  <div class="font-bold">Logo</div>
+  <ul class="flex flex-col md:flex-row gap-2 md:gap-6 mt-2 md:mt-0">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+```
+
+### 5. Card Grid
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="bg-white shadow p-4">Card 1</div>
+  <div class="bg-white shadow p-4">Card 2</div>
+  <div class="bg-white shadow p-4">Card 3</div>
+  <div class="bg-white shadow p-4">Card 4</div>
+</div>
+```
+
+### 6. Hero Section
+
+```html
+<section class="flex flex-col md:flex-row items-center p-8 bg-blue-100">
+  <div class="md:w-1/2">
+    <h1 class="text-2xl md:text-5xl font-bold">Hero Title</h1>
+    <p class="mt-4">This is some hero text that changes size.</p>
+    <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Get Started</button>
+  </div>
+  <div class="md:w-1/2 mt-6 md:mt-0">
+    <img src="https://placehold.co/400x300" alt="Hero image" class="rounded-lg shadow">
+  </div>
+</section>
+```
+
+### 7. Responsive Images
+
+```html
+<img src="https://placehold.co/600x400"
+     alt="Sample"
+     class="w-full object-cover h-48 md:h-96 lg:h-[600px] rounded-lg" />
+```
+
+### 8. Pricing Table
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="bg-gray-100 p-6 rounded shadow">Basic Plan</div>
+  <div class="bg-blue-200 p-6 rounded shadow md:col-span-1 lg:col-span-1">Pro Plan</div>
+  <div class="bg-gray-100 p-6 rounded shadow">Enterprise</div>
+</div>
+```
+
+### 9. Responsive Footer
+
+```html
+<footer class="bg-gray-900 text-white p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div>
+    <h3 class="font-bold">About</h3>
+    <p>Short description.</p>
+  </div>
+  <div>
+    <h3 class="font-bold">Links</h3>
+    <ul class="space-y-2">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+    </ul>
+  </div>
+  <div>
+    <h3 class="font-bold">Contact</h3>
+    <p>info@example.com</p>
+  </div>
+</footer>
+```
+
+### 10. Typography scaling
+
+```html
+<h1 class="text-sm md:text-base lg:text-xl">Scaling Headline</h1>
+```
+
+### 11. Responsive spacing
+
+```html
+<div class="bg-green-200 p-2 md:p-6 lg:p-12">
+  Responsive padding adjusts at breakpoints.
+</div>
+```
+
+### 12. Responsive backgrounds
+
+```html
+<div class="h-40 bg-red-300 md:bg-yellow-300 lg:bg-green-300">
+  Background color changes as screen grows.
+</div>
+```
+
+### 13. Dark mode + responsiveness
+
+```html
+<div class="p-6 bg-gray-100 dark:bg-gray-900 md:dark:bg-black">
+  Try toggling dark mode in Tailwind config.
+</div>
+```
+
+### 14. Dashboard Layout
+
+```html
+<div class="flex">
+  <aside class="hidden md:block w-64 bg-gray-200 p-4">Sidebar</aside>
+  <main class="flex-1 p-6">Main content area</main>
+</div>
+```
+
+### 15. Gallery/Portfolio
+
+```html
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <img src="https://placehold.co/200" class="rounded-lg hover:scale-105 transition" />
+  <img src="https://placehold.co/200" class="rounded-lg hover:scale-105 transition" />
+  <img src="https://placehold.co/200" class="rounded-lg hover:scale-105 transition" />
+  <img src="https://placehold.co/200" class="rounded-lg hover:scale-105 transition" />
+</div>
+```
+
+### 16. Blog Layout
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <main class="md:col-span-2 bg-white p-4 shadow">Blog content</main>
+  <aside class="bg-gray-100 p-4 shadow">Sidebar</aside>
+</div>
+```
+
+## Homework Challenge
 
 Start working on your [final project](./project-2.md). 
-
