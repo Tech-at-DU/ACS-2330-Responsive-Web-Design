@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Math Functions Demo</title>
+<style>
+/* Center the demo on a black canvas */
+body {
+  background: #000;
+  display: grid;
+  place-items: center;   /* centers both horizontally & vertically */
+  min-height: 100vh;
+}
+
+/* A fixed 300×300 area that the dots orbit in */
+.container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+/* Register --scale so it interpolates smoothly (otherwise it “steps”) 
+  Comment the block below to test this. 
+*/
+@property --scale {
+  syntax: '<number>';    /* tells the engine it's numeric */
+  inherits: false;
+  initial-value: 1;
+}
+
+.dot {
+  /* Per-dot index (overridden in markup) and total count */
+  --i: 0;                /* 0..11 in your HTML */
+  --count: 12;
+
+  /* Angle for this dot around the circle (radians) */
+  /* trig() in CSS expects angles; using 2π * i / count spreads them evenly */
+  --angle: calc(2 * pi * var(--i) / var(--count));
+
+  /* Position on circle: cos → x, sin → y. Multiply by radius in px. */
+  --x: calc(cos(var(--angle)) * 120px);
+  --y: calc(sin(var(--angle)) * 120px);
+
+  /* Distance from center. NOTE: x/y are lengths, so hypot() returns a length. */
+  --distance: calc(hypot(var(--x), var(--y)));
+
+  /* Hue 0–360° distributed by index; HSL accepts <angle> units */
+  --hue: calc(var(--i) * (360deg / var(--count)));
+
+  /* Scale factor we animate via @keyframes (smooth because of @property) */
+  --scale: 1;
+
+  /* Basic dot visuals */
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: hsl(var(--hue) 100% 50%);
+
+  /* Compose transform from both translate and scale so scale animation
+     doesn’t overwrite the translation */
+  transform: translate(var(--x), var(--y)) scale(var(--scale));
+
+  /* ⛔ This shorthand fails when the delay is not a valid <time>:
+     var(--distance) is a *length*, so (length / number) * 1s ≠ <time>.
+     That invalidates the whole animation declaration.
+     animation: pulse 2s calc((var(--distance) / 200) * 1s) infinite alternate;
+  */
+
+  /* ✅ This would work because there is no delay expression to invalidate: */
+  /* animation: pulse 2s infinite alternate; */
+
+  /* ✅ Your current setup: phase each dot by index.
+     var(--d) is a <time>; multiplying by a unitless number yields <time>. */
+  --d: 0.5s;
+  animation-name: pulse;
+  animation-duration: var(--d);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  /* Stagger start times so dots chase around the ring */
+  animation-delay: calc(var(--d) * var(--i));
+
+  /* ——— OPTIONAL: if you want a *distance-based* delay (ripples),
+     keep the math UNITLESS for timing, then convert to seconds.
+     Uncomment this block and the next three lines will override delay.
+
+     Create unitless coords and distance:
+     --ux: calc(cos(var(--angle)) * 1);     /\* unitless radius = 1 *\/
+     --uy: calc(sin(var(--angle)) * 1);
+     --udist: calc(hypot(var(--ux), var(--uy)));  /\* unitless *\/
+
+     Then set a time from that unitless distance:
+     animation-delay: calc(var(--udist) * var(--d) * -1); /\* negative = immediate phase *\/
+  */
+}
+
+/* Animate the registered custom property (now it tweens smoothly) */
+@keyframes pulse {
+  from { --scale: 0.5; }
+  to   { --scale: 1.2; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Each dot sets its index; CSS does the math -->
+    <div class="dot" style="--i:0"></div>
+    <div class="dot" style="--i:1"></div>
+    <div class="dot" style="--i:2"></div>
+    <div class="dot" style="--i:3"></div>
+    <div class="dot" style="--i:4"></div>
+    <div class="dot" style="--i:5"></div>
+    <div class="dot" style="--i:6"></div>
+    <div class="dot" style="--i:7"></div>
+    <div class="dot" style="--i:8"></div>
+    <div class="dot" style="--i:9"></div>
+    <div class="dot" style="--i:10"></div>
+    <div class="dot" style="--i:11"></div>
+  </div>
+</body>
+</html>
