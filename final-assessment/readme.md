@@ -14,7 +14,7 @@ On desktop the site should display as two boxes side by side each 400px by 400px
 
 The image will be on the right and the form on the left. 
 
-The form elements will be stacked vertically with the label above each input aligned to the right. 
+The form elements will be stacked vertically with the label above each input aligned above and to the left. 
 
 See the image below. 
 
