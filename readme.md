@@ -28,13 +28,13 @@ Students by the end of the course will be able to ...
 |  4    | Thu, Sep  3 | [Introduction to Flexbox and responsive units] |
 |  -    | Week 3 - Flex Box and Grid |           -              |
 |  5    | Tue, Sep  8 | [CSS Grid] [Responsive Grid Challenge 1] |
-|  6    | Thu, Sep 10 | [Responsive Grid Challenge 2] |
+|  6    | Thu, Sep 10 | [Responsive Grid Challenge 2]           |
 |  -    | Week 4 - Accessibility |               -              |
 |  7    | Tue, Sep 15 | [Accessibility and Inclusive Design]    |
 |  8    | Thu, Sep 17 | [Accessibility part 2]                  |
 |  -    | Week 5 - Tailwind Responsive |         -              |
 |  9    | Tue, Sep 22 | [Mobile First Dev]  [Project 2]         |
-| 10    | Thu, Sep 24 | [UX Testing]                              |
+| 10    | Thu, Sep 24 | [UX Testing]                            |
 |  -    | Week 6 - Responsive UI |               -              |
 | 13    | Tue, Sep 29 | [Tailwind responsive]                   |
 | 14    | Thu, Oct  1 | Lab                                     |
