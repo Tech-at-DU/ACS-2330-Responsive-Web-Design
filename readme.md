@@ -36,11 +36,11 @@ Students by the end of the course will be able to ...
 |  9    | Tue, Sep 22 | [Mobile First Dev]  [Project 2]         |
 | 10    | Thu, Sep 24 | [UX Testing]                            |
 |  -    | Week 6 - Responsive UI |               -              |
-| 13    | Tue, Sep 29 | [Tailwind responsive]                   |
-| 14    | Thu, Oct  1 | Lab                                     |
+| 11    | Tue, Sep 29 | [Tailwind responsive]                   |
+| 12    | Thu, Oct  1 | Lab                                     |
 |  -    | Week 7      |                          -              |
-| 14    | Tue, Oct  6 | Final Assessment                        |
-| 15    | Thu, Oct  8 | Final Presentations                     |
+| 13    | Tue, Oct  6 | Final Assessment                        |
+| 14    | Thu, Oct  8 | Final Presentations                     |
 
 [Introduction to Responsive Web Design]: ./class-1.md
 [Creating Wire Frames]: ./class-2.md
@@ -82,7 +82,6 @@ Students by the end of the course will be able to ...
 To pass this course you must meet the following requirements:
 
 - Receive a passing score for all 4 labs (see each lab for rubric)
-- 100% completion of the Magic 8 ball tutorial (submit proof of working Magic 8 ball project)
 - Complete course project by receiving a passing score on the [rubric](https://docs.google.com/document/d/1vEAeNCwbG9OHmLzYCuV2VzmG0aC2VQdDLoypzXdALj4/edit?usp=sharing)
 - Receive a 70% or higher on the final summative assessment [Study guide](StudyGuide.md)
 - Actively participate in class and abide by the attendance policy

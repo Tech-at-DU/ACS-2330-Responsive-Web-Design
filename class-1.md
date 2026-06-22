@@ -1,48 +1,50 @@
 # Class 1: Introduction to Responsive Web Design
 
 ## Warmup (10 mins)
-- What did you do for spring break? 
-- How would you expand the SFPOPOS site? What new features would add? 
+
+Find your SFPOPOS project and start it. Open it in two places:
+
+1. **Desktop browser** — view it normally at full width
+2. **Your phone** — open the local URL on your phone (same wifi network required)
+
+Compare the two. Make a list of specific problems you find on mobile: what breaks, what's too small to tap, what's hard to read, what's cut off. You'll be solving these over the next several weeks.
 
 ## Part 1: Introduction (10 mins)
-Responsive web design is an approach to web design that aims to create websites that can adapt to different screen sizes and devices. The concept was introduced by Ethan Marcotte in 2010, who proposed designing websites to be flexible and adaptable to different devices, rather than creating separate mobile and desktop versions of a site. Since then, responsive web design has become more popular as mobile devices have become prevalent, and most modern websites are built using responsive web design techniques. With the increasing popularity of mobile devices and the introduction of new technologies, responsive web design is likely to continue to evolve and adapt to new devices and technologies in the future.
+Responsive web design is an approach to web design that aims to create websites that can adapt to different screen sizes and devices. The concept was introduced by Ethan Marcotte in 2010, who proposed designing websites to be flexible and adaptable to different devices, rather than creating separate mobile and desktop versions of a site. Since then, responsive web design has become more popular as mobile devices have become prevalent, and most modern websites are built using responsive web design techniques.
+
+**Mobile traffic now exceeds desktop globally.** This course takes a **mobile-first** approach: we design and code for mobile screens first, then scale up to larger screens. This is the industry standard — and it's how Tailwind CSS (which we'll use in the second half of this course) works out of the box. Get used to thinking small first.
 
 ## Part 2: Group Activity (30 minutes)
-Your job is to analyze these websites and identify any responsive design techniques that have been used.
 
-- https://www.dropbox.com
-- https://dribbble.com/shots/popular/animation
+Here are the responsive techniques you'll be hunting for. Learn these — they're the vocabulary for the rest of the course:
+
+| Technique | What to look for |
+|-----------|-----------------|
+| **Column changes** | Grid goes from 3 columns on desktop to 1 on mobile |
+| **Stack to row** | Elements stacked vertically on mobile, side-by-side on desktop |
+| **Nav collapse** | Full nav bar on desktop becomes hamburger or bottom bar on mobile |
+| **Elements hidden/shown** | Something visible on desktop disappears on mobile, or vice versa |
+| **Fluid images** | Images resize with the container instead of clipping or overflowing |
+| **Text scaling** | Font sizes change across screen sizes |
+| **Touch-sized targets** | Buttons and links are large enough to tap on mobile |
+
+Now find these techniques in real sites. Each group takes one site, views it on both desktop and mobile (use browser dev tools to simulate mobile), and reports back.
+
+**Sites:**
 - https://github.com
-- https://www.shopify.com/ca
-- https://www.magicleap.com/en-us/
+- https://www.shopify.com
 - https://www.smashingmagazine.com
 - https://slack.com
 - https://www.wired.com
+- https://www.dropbox.com
+- https://dribbble.com
 
-**How many of these techniques can you find** in the sites above: 
-- https://www.interaction-design.org/literature/article/responsive-design-let-the-device-do-the-work
-- https://web.dev/articles/responsive-web-design-basics
-- https://www.designitic.com/responsive-web-design-techniques-and-strategies/
+**For your site, answer:**
+- Which techniques from the table above did you find? Give a specific example of each.
+- What works well on mobile? What doesn't?
+- Sketch the mobile vs desktop layout difference for one page (30 seconds, boxes only).
 
-**To do this you will need to view the site on a desktop computer and a on a mobile device.** 
-
-Your group will present your findings to the class and discuss the strengths and weaknesses of the website's responsive design.
-
-> **Its best to view a site on a mobile device to really see how it works on mobile devices!** If you don't have a mobile device you can simulate a mobile browsing experience in Chrome or Safari using the Responsive mode. 
-
-- Compare the sites above on both desktop and mobile, side by side! 
-- Look for the same elements, like menus, and content boxes, on both desktop and mobile. Ask yourself how these have changed between the two views. Is anything missing on one view or the other? 
-- Takes notes, sketch the changes in layout with a simple wireframe.
-
-Do these things! This is important for studying and understanding how these sites are working on desktop and mobile!
-
-Can you find these things: 
-- Text changes size
-- Number of columns changes
-- Flexible boxes
-- Elements are removed or moved
-- Change from horizontal to vertical layout
-- Elements are removed (possibly moved to another area)
+Each group presents findings. Reference the technique names from the table above — you'll use these terms all semester.
 
 ## Approaches to responsive design
 Responsive design is a design approach that aims to create websites that can adapt to different screen sizes and devices. The principles of responsive design involve using flexible layouts, fluid images, and media queries to ensure that the website looks good and functions well on any device.
@@ -55,15 +57,15 @@ Responsive design is a design approach that aims to create websites that can ada
 Overall, the principles of responsive design aim to create a website that provides a great user experience regardless of the user's device. By using flexible layouts, fluid images, media queries, and responsive units, designers can create websites that are optimized for different screen sizes and devices.
 
 ## Wire Framing
-Before writing the code to build your websites and make them responsive it is a good idea to have a visual idea of what you are going build!
+Before writing any code, plan what you're building. As a developer, wireframes serve one purpose: **give you a layout spec to implement**. You're not designing — you're planning your code. Wireframes answer questions like: What moves? What stacks? What disappears? What changes size?
 
-The subject for this assignment will be the React Fundamentals tutorial. 
+The subject for this assignment will be the SFPOPOS site you built in the previous course. You already built the desktop version. Now you're planning the mobile version.
 
-Your goal is to draw two wire frames one for the desktop version and one for a mobile version. 
+Your goal is to draw two wireframes: one for the desktop version (already exists — document what's there) and one for a mobile version (you design this).
 
 Follow this guide on wire framing: https://careerfoundry.com/en/blog/ux-design/how-to-create-your-first-wireframe/
 
-Wire framing a web site involves creating a visual representation of the website's layout and structure. This representation is called a wireframe, and it's essential to creating a functional and user-friendly website. Here are some steps to help you wireframe a website:
+Wire framing a web site involves creating a visual representation of the website's layout and structure. Here are some steps:
 
 1. **Identify the website's purpose**: Before you start wireframing, identify the website's purpose and goals. This will help you determine the content and features that should be included in the wireframe.
 2. **Determine the website's structure**: The structure of the website includes the pages and sections that make up the website. Start by creating a list of the pages you want to include on your website, and then organize them into a logical structure.
@@ -75,19 +77,14 @@ Wire framing a web site involves creating a visual representation of the website
 
 By following these steps, you can create a clear and effective wireframe for your website. Remember that wireframing is an iterative process, so be prepared to revise and refine your wireframe as needed.
 
-Tips and guidelines to help you draw a wireframe:
+Developer-specific wireframing tips:
 
-1. **Start with a clear goal**: Before starting, establish a clear goal and purpose for your wireframe. What do you want to achieve with it? What are the most important elements you need to include? These should be something like: 
-  - Shows the most relavant and important information first. 
-  - Navigation, and other options are clearly labeled and easy to find, and are understandable at a glance.
-  - Some information may have to move on the mobile version, and may not be immediately visible. Ask your self how this affects the a vistors experience using the site? 
-2. **Keep it simple**: Wireframes are not meant to be detailed designs but rather a rough sketch of the website's structure and layout. Keep it simple and focus on the overall layout and functionality of the site.
-3. **Use basic shapes**: Use simple shapes, such as rectangles, circles, and lines, to represent the different elements of the website, including text, images, and buttons.
-4. **Consider content hierarchy**: Pay attention to the order and placement of the content on the page. Make sure that the most important content is easily visible and accessible to the user.
-5. **Use a grid system**: A grid system helps you create a consistent and organized layout. Use a grid system to align the different elements of the page.
-6. **Label your wireframe**: Make sure to label your wireframe and provide a clear explanation of what each element represents. This will make it easier for others to understand your wireframe.
-7. **Focus on functionality**: The wireframe should focus on the functionality of the website rather than the visual design. Don't worry about colors, fonts, or images at this stage.
-8. **Get feedback**: Once you have created your wireframe, get feedback from other team members or users to see if it meets the website's goals and user needs.
+1. **Start with mobile** — draw the phone layout first. What fits? What doesn't? What has to move or collapse?
+2. **Label every element** — you'll be writing CSS class names for these. Vague boxes become vague code.
+3. **Mark what changes between sizes** — annotate the wireframe: "this becomes 2 columns on desktop", "this nav collapses to hamburger on mobile."
+4. **Keep it simple** — rectangles, lines, and text labels. No color, no fonts, no images. You're writing a spec, not doing design.
+5. **Focus on layout and order** — think about which elements appear first on mobile (top of page = most important on a phone).
+6. **Note interactions** — if something opens, closes, or changes state, write it down. "Tap hamburger → menu slides in from left."
 
 **Tools**: Use any of these tools to create and share your wire frames. 
 - https://balsamiq.com
@@ -99,60 +96,48 @@ Tips and guidelines to help you draw a wireframe:
 Using one of the tools above start mocking up the SFPOPOS Site. 
 
 ## Homework challenge
-You are going to create wireframes for the SFPOPOS site. Before drawing any boxes you need to create an outline and some user stories. 
+Plan the responsive version of your SFPOPOS site. This is a planning exercise — you're producing a spec you will implement in code over the next few weeks.
 
-**Why create user stories?** If you don't ask and answer questions about how the site will be used the design will be flawed. 
+**Step 1. Audit your SFPOPOS site.** Open it on your phone. List every problem: content cut off, text too small, buttons hard to tap, nav unusable, layout broken. This list is your problem statement.
 
-**Why create an outline?** Without a catalog of content its very likely you will leave something out. 
-
-Step 1. Write three user stories for the the site. 
-
-Step 2. Make an outline. Before drawing anything you need to create an outline that lists all of the content on the site. An outline is a list with a hierarchy. Show the content as a hierarchy. Your outline should express which which section owns which content elements on which page. Something like. 
+**Step 2. Make a content outline.** List every element on every page. This becomes your checklist — nothing should disappear on mobile that exists on desktop.
 
 ```
 - SFPOPOS
   - Home
     - Header
       - Page Title: SFPOPOS
-      - Sub title: San Francisco Privately Owned Public Open Spaces
+      - Subtitle: San Francisco Privately Owned Public Open Spaces
     - Nav
       - NavLink: Home
       - NavLink: About
+      - [mobile: collapses to hamburger menu]
     ...
 ```
 
-Step 3. Wire frame the React Fundamentals Tutorial (the SF Public Open Spaces Web site.) **You will draw wire frames for the desktop version and a mobile version.**
+**Step 3. Draw wireframes — mobile first.** For each page, draw mobile layout first, then desktop. Mark what changes between the two.
 
-The your wireframes can describe the tutorial project as it was presented or describe changes that you want to make, it's up to you. Your wire frames don't have to look like the original tutorial. 
+Questions to answer in your wireframes:
+- Where does the nav go on mobile? (hamburger? bottom bar? collapsed list?)
+- What's the column count on mobile vs desktop for the spaces grid?
+- How does the detail page layout change on mobile?
+- What's the content order on mobile — does anything need to reorder?
 
-The mobile version of the website doesn't exist yet. What this looks like is up to you. **Keep in mind that the mobile site should include all of the elements from the desktop site.** You can rearrange these elements in any way that makes sense. Think about it from a users perspective, what would make the most sense and work best when browsing on a phone? Consult your user stories. 
+Use paper, Figma, or any tool. If using paper, draw clearly — this is a spec, not a sketch.
 
-You can do your work on paper, or in an application like Figma, Adobe XD, or Sketch. You can also draw your wire frames on paper. If you choose to use paper, you must draw draw neatly and not skimp on dectails!
-
-Your wireframes will include the following: 
-An outline: 
-- Your outline should include everything
-- Your outline should describe everything clearly
-- Your outline should express the hierarchy 
-Wire frame images: 
-- Wire frames include all pages 
-- Wire frames include a mobile and desktop image for each page
-- Wire frames include all elements from the outline
-- Includes all elements in both desktop and mobile 
-- All elements are clealy labeled 
-Stretch goal:
-- Identify areas where you can use the repsonsive design ideas in your wire frames. This might things like: 
-  - fluid layout
-  - flexible images 
-  - scaling typography
+Your wireframes will include:
+- Content outline with hierarchy
+- Mobile wireframe for each page
+- Desktop wireframe for each page
+- Annotations marking what changes between sizes
+- All elements labeled with names you'd use as CSS class names
 
 ### Assess your work
 
 | Category | Does not meet expectations | Meets Expectations | Exceeds expectations |
 |:--------:|:--------------------------:|:------------------:|:--------------------:|
-| Content | Missing content or content can't be identified | Has all content | All content is clearly labeled |
-| Elements | Pages are missing elements or elements can't be identified | Each page has all elements | All elements on all pages are clearly idenitifable |
-| Desktop and Mobile | Wire frames do not include a desktop or mobile | Includes both desktop and mobile | Desktop and mobile designs are clearly identifiable and make sense |
-| Quality | Drawings are poor quality, sloppy, or hard to read, or contain extraneous details | drawings are clear and concise | well presented and the project is clearly identifiable | 
-| User stories | Has less than three user stories, or the user stories do not show clear who, what, and why. | User stories are well written | User stories provide actionable direction for software development team |
-| Outline | Outline nonexistent or missing elements | Outline contains everything found in the site, is clearly labeled, and shows hierarchy | This outline includes details describing interaction and functionality |
+| Audit | No audit or audit misses obvious mobile problems | Lists concrete problems found on mobile | Problems are specific and mapped to elements (e.g. "nav has no mobile layout", "cards overflow at 375px") |
+| Content outline | Missing elements or hierarchy unclear | All pages and elements listed with clear hierarchy | Element names match what you'd use as CSS class names |
+| Mobile wireframes | Missing or incomplete mobile layouts | Mobile layout for each page, all elements present | Annotated — notes what changes, collapses, or reorders vs desktop |
+| Desktop wireframes | Missing or just a screenshot of the existing site | Desktop layout documented for each page | Shows intentional differences from mobile (column counts, nav layout, spacing) |
+| Annotations | No annotations | Marks what changes between mobile and desktop | Includes interaction notes (hamburger opens menu, grid changes columns, etc.) |
