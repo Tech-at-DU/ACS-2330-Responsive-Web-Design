@@ -115,13 +115,28 @@ Plan the responsive version of your SFPOPOS site. This is a planning exercise �
     ...
 ```
 
-**Step 3. Draw wireframes — mobile first.** For each page, draw mobile layout first, then desktop. Mark what changes between the two.
+**Step 3. Draw wireframes — mobile first.** For each page, draw mobile layout first, then desktop. Annotate every responsive change using this notation:
 
-Questions to answer in your wireframes:
-- Where does the nav go on mobile? (hamburger? bottom bar? collapsed list?)
-- What's the column count on mobile vs desktop for the spaces grid?
-- How does the detail page layout change on mobile?
-- What's the content order on mobile — does anything need to reorder?
+```
+[mobile] → [desktop]
+1 col    → 3 col
+stacked  → side by side  
+hamburger → full nav
+hidden   → visible
+full width → 50% width
+```
+
+For each page capture these responsive features:
+
+| Feature | Questions to answer |
+|---------|-------------------|
+| **Layout** | How many columns on mobile? On desktop? Where do things stack vs sit side by side? |
+| **Navigation** | Does the nav collapse? What replaces it on mobile — hamburger, bottom bar, hidden? |
+| **Images** | Do images fill full width on mobile? Shrink on desktop? |
+| **Content order** | Does anything reorder between mobile and desktop? What appears first on mobile? |
+| **Hidden/shown** | Is anything visible on desktop that hides on mobile, or vice versa? |
+| **Text** | Does any text change size noticeably between sizes? |
+| **Touch targets** | Are buttons and links large enough to tap on mobile (mark anything that needs to be bigger)? |
 
 Use paper, Figma, or any tool. If using paper, draw clearly — this is a spec, not a sketch.
 
@@ -129,7 +144,7 @@ Your wireframes will include:
 - Content outline with hierarchy
 - Mobile wireframe for each page
 - Desktop wireframe for each page
-- Annotations marking what changes between sizes
+- Annotations on every responsive change using the notation above
 - All elements labeled with names you'd use as CSS class names
 
 ### Assess your work
