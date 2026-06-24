@@ -1,329 +1,223 @@
-# Flexbox, responsive units, responsive images
+# Class 4: Responsive Flexbox Patterns
 
-This class will review flexbox and continue on to some of it's other properties, and talk about responsive units.
+You already know Flexbox. This class focuses on how to use it specifically for responsive layouts — the patterns you'll reach for every time a layout needs to change between mobile and desktop.
 
-## Flexible units
+## Objectives
 
-### vh and vw
+- Use `flex-direction` to switch between stacked and side-by-side layouts
+- Use `order` to resequence content on mobile
+- Use `vw`, `vh`, and `%` units for fluid sizing
+- Implement responsive images
+- Show and hide elements across breakpoints
+- Apply a sticky footer with Flexbox
 
-These are two units that can help create responsive pages. 
+---
 
-vh = viewport height
-vw = viewport width
+## Responsive Units
 
-The viewport is the area in the browser window where your page is displayed. 
+### `%`
 
-Imagine a value of 100 is 100% of the width or the height. For example if the screen is 1000px wide 50vw would be 500px. 
+Percentage is relative to the **parent element**. Use it to size children proportionally within a container:
 
-https://css-tricks.com/fun-viewport-units/
+```css
+.card {
+  width: 100%;    /* fills parent on mobile */
+}
 
-Use this when you need to size something based on the size of window. 
-
-Note! vh and vw differ from % because % is based on the the parent element! Where vh and vw are based size of the view port.
-
-### % 
-
-Use percent to scale an element relative to the size of its parent element. If the parent were 200px and the child was `width: 50%` it would be 100px. 
-
-This great for making images that scale to fill an area. This works best when the image has a parent element that defines the space the image needs to fill. 
-
-## What is Flexbox
-
-Flexbox is a layout module in CSS that provides a flexible way to arrange and align elements within a container. It allows developers to create responsive and dynamic layouts that adjust to different screen sizes and device orientations.
-
-In Flexbox, we use a set of CSS properties to define the layout of our elements. The most important of these properties are:
-
-1. **`display`**: flex - This property tells the browser to use the Flexbox layout mode for the selected element and its children.
-2. **`flex-direction`** - This property determines the direction in which the flex items are laid out within the container. It can be set to `row`, `column`, `row-reverse`, or `column-reverse`.
-3. `justify-content` - This property controls how the flex items are distributed along the main axis of the container. It can be set to `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, or `space-evenly`.
-4. **`align-items`** - This property controls how the flex items are aligned along the cross axis of the container. It can be set to `flex-start`, `flex-end`, `center`, `baseline`, or `stretch`.
-5. **`flex-wrap`** - This property determines whether the flex items should wrap onto multiple lines or stay on a single line. It can be set to `nowrap`, `wrap`, or `wrap-reverse`.
-
-Overall, Flexbox is a powerful tool for creating responsive and dynamic layouts, and it's an essential skill for any web developer to master.
-
-There are a few more properties that you shouold understand. 
-
-Here is an example. 
-
-```HTML
-<style>
-  .main {
-    display: flex;
-    flex-direction: column;
+@media (min-width: 768px) {
+  .card {
+    width: 50%;   /* two cards side by side on tablet */
   }
-</style>
-
-<div class="main">
-  <div class="container">
-    <h1>Hello</h1>
-    <p>World</p>
-  </div>
-  <div class="footer"></div>
-</div>
+}
 ```
 
-Here `div.container` and `div.footer` are "flex items" and are arrranged in a column, while `h1` and `p` are unaffected. 
+### `vw` and `vh`
 
-Read up on flex box:
+`vw` and `vh` are relative to the **viewport**, not the parent. `100vw` = full browser width, `100vh` = full browser height.
 
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-Practice your Flexbox skills with this game: 
-
-https://flexboxfroggy.com
-
-### Flex items 
-
-The children of a flex container are flex items and are arranged by the container. Flex items have a few properties that determine how they are arranged. 
-
-- **`order`** - determines the order in the container
-- **`flex-grow`** - determines how much an item will grow _relative to its siblings_
-- **`flex-shrink`** - determines how an item will shrink _relative to it's siblings_
-- **`flex-basis`** - sets the initial size of the flex item
-- **`flex`** - shorthand property for `flex-grow`, `flex-shrink`, and `flex-basis`
-- **`align-self`** - Overrides `align-items` setting for this item
-
-## Flex item `flex`
-
-Flex, not to be confused with flexbox, is a property that determines how a "flex item" will grow or shrink to fit the space available in its flex container. 
-
-Try the demo here: 
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/flex
-
-Flex determines how much of the available space an element takes up. You could think of it as how items divide the space. 
-
-You may have noticed that when an element is display flex the child elements, the "flex items" some times get squashed to together. The flex property allows those items to decide how much of the space they will use. 
-
-https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/
-
-### flex-grow flex-shrink flex-basis
-
-The flex property in CSS is used to control the flexible behavior of a container element and its child elements. It is a shorthand property that combines three individual properties: `flex-grow`, `flex-shrink`, and `flex-basis`. These three properties work together to determine how an element should grow or shrink in relation to other elements within the container. 
-
-Flex applies to "flex items" that inside of a flex container! 
-
-Try this example: https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/
-
-### Flex order 
-
-In some cases you might want to change the order of elements in your responsive layout. For example, the details page is arranged in two columns with text on the left and an image on the right.
-
-```HTML
-<div class="POPOSDetails">
-  <div class="POPOSDetails-image"></div>
-  <div class="POPOSDetails-info"></div>
-</div>
+```css
+.hero {
+  height: 100vh;  /* fills the entire screen height */
+  width: 100vw;   /* fills the entire screen width */
+}
 ```
 
-Might appear as: 
+Use `vh` for full-screen sections and `vw` for elements that need to span the entire window regardless of their container.
 
-`| Image | Text info |`
+**Note:** `%` and `vw`/`vh` look similar but behave differently when elements are nested. `%` is relative to the parent; `vw`/`vh` always refer to the window.
 
-If `div.POPOSDetails` is a flex container `div.POPOSDetails-image` and `div.POPOSDetails-info` are flex items. If `div.POPOSDetails` is flex direction row the two flex items will be arrange in order left to right.
+---
 
-Using `flex-direction: row-reverse` you would get this: 
+## Stack to Row Pattern
 
-`| Text info | Image |`
+The most common responsive Flexbox pattern: elements stack vertically on mobile, sit side by side on desktop.
 
-- `flex-direction` - use row-reverse or column-reverse. Use these to reverse the order of all flex items. Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+```css
+.POPOSDetails {
+  display: flex;
+  flex-direction: column;  /* mobile: stacked */
+}
 
-What about the info on the details page. It looks like this: 
-
-```HTML
-<div class="POPOSDetails-info">
-  <h1 class="POPOSDetails-title"></h1>
-  <p class="POPOSDetails-desc"></p>
-  <p class="POPOSDetails-hours"></p>
-  <div class="POPOSFeatureList"></div>
-  <p class="POPOSDetails-geo"></p>
-</div>
+@media (min-width: 768px) {
+  .POPOSDetails {
+    flex-direction: row;   /* desktop: side by side */
+  }
+}
 ```
 
-Here there are 5 flex items in the info container. If the container is flex-direction column. 
+Apply this to the SFPOPOS detail page — image and text info should sit side by side on desktop, stack on mobile.
 
-```
-| title |
-| Desc |
-| hours |
-| features |
-| geo |
-```
+---
 
-Imagine on mobile you wanted to change the order this to make the features and hours appear at the top to make them more prominent. To do this you could use the `order` property. This sets the index order of flex items. 
+## Reordering Content with `order`
 
-```CSS
-.POPOSDetails-title { order: 3 }
-.POPOSDetails-hours { order: 2 }
-.POPOSFeatureList { order: 1 }
-.POPOSDetails-desc { order: 4 }
-.POPOSDetails-geo { order: 5 }
-```
+On mobile, content order often needs to differ from desktop. The `order` property on flex items lets you change sequence without changing the HTML.
 
-```
-| features |
-| hours |
-| title |
-| Desc |
-| geo |
+Example: on the detail page, the image appears first in the HTML, but on mobile you may want the title and key info first (above the fold), with the image below.
+
+```css
+/* Mobile: title first, image second */
+.POPOSDetails-image { order: 2; }
+.POPOSDetails-info  { order: 1; }
+
+@media (min-width: 768px) {
+  /* Desktop: image left, info right — restore HTML order */
+  .POPOSDetails-image { order: 1; }
+  .POPOSDetails-info  { order: 2; }
+}
 ```
 
-- `order` - the order property allows you to set the index order of flex items. Read more: https://developer.mozilla.org/en-US/docs/Web/CSS/order
+Check your wireframe annotations — any `reorder on mobile` notes become `order` properties.
+
+---
+
+## Hiding and Showing Elements
+
+Sometimes mobile and desktop need completely different elements — a hamburger button on mobile, a full nav on desktop.
+
+```css
+/* Default (mobile): show hamburger, hide full nav */
+.nav-full     { display: none; }
+.nav-hamburger { display: block; }
+
+@media (min-width: 768px) {
+  /* Desktop: show full nav, hide hamburger */
+  .nav-full      { display: block; }
+  .nav-hamburger { display: none; }
+}
+```
+
+Any `hidden → visible` annotation in your wireframe becomes a `display` toggle.
+
+---
+
+## Responsive Images
+
+**Method 1 — fluid image (most common):**
+
+```css
+img {
+  width: 100%;
+  height: auto;
+}
+```
+
+`width: 100%` fills the container. `height: auto` maintains aspect ratio. This is all you need for most images.
+
+**Method 2 — `object-fit` for fixed-height containers:**
+
+```css
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;  /* crops to fill, no distortion */
+}
+```
+
+Use this when you need a consistent image height across cards in a grid.
+
+**Method 3 — `srcset` for performance (serve smaller images to small screens):**
+
+```html
+<img
+  src="image-large.jpg"
+  srcset="image-small.jpg 480w,
+          image-medium.jpg 768w,
+          image-large.jpg 1200w"
+  alt="Description"
+>
+```
+
+The browser picks the most appropriate size. Worth doing for hero images and anything above the fold.
+
+---
 
 ## Sticky Footer
 
-A sticky footer is a footer that sticks to the bottom of the page **when the content doesn't reach the bottom of the window**. If the content is larger than the window the footer is below the content. 
+A sticky footer sits at the bottom of the viewport when content is short, and stays below content when the page is long. Flexbox makes this straightforward.
 
-You can implement a sticky footer in several ways. One method uses Flex. The idea is to arrange the content and the footer with flex and direction column. Set the min-height of the content to 100vh. Last set the 
+HTML structure required:
 
-## Challenge 
-
-Apply sticky footer to the React Fundamentals tutorial. You need the footer to stick to the bottom of the page when the page is larger than the content. This will be the case on the About page and the details page. 
-
-You will need to rearrange the HTML structure to make this work. You need the two elements. 
-
-```HTML
+```jsx
 <div className="App">
-  <div className='App-content'>
-    ...
+  <div className="App-content">
+    {/* all page content here */}
   </div>
   <Footer />
 </div>
 ```
 
-In App JS I have `div.App` has two child elements: `div.App-content` and `div.Footer`. You can't see it here but `<Footer />` defines a div with className "Footer". 
+CSS:
 
-```CSS
+```css
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.App .App-content {
-  flex: 1 0 auto;
+.App-content {
+  flex: 1 0 auto;  /* grows to fill available space */
 }
-```
 
-Style `div.App` with flex. Use the flex property to allow it to fill the space. 
-
-```CSS
 .Footer {
-  flex-shrink: 0;
+  flex-shrink: 0;  /* never shrinks */
 }
 ```
 
-The footer needs this to allow it to sit correctly. 
+The `flex: 1 0 auto` on the content area pushes the footer to the bottom. Apply this to SFPOPOS — the About page and detail pages are short enough that the footer floats up without it.
 
-## Stretch Challenges 
+---
 
-**Stretch Challenge** use flex on the nav bar. 
+## Challenge
 
-On a wide screen the nav bar links should be arranged in a horizontal row. On the a narrow screen the two nav links should be side by side with the Ranom Spaced button below them. 
+Work through your SFPOPOS implementation checklist and apply Flexbox patterns where your wireframe calls for them:
 
-Continue the challenges from class 2. 
+1. **Detail page** — stack to row layout (image + info)
+2. **Detail page** — reorder content on mobile if your wireframe calls for it
+3. **Nav bar** — use Flexbox to arrange links horizontally on desktop
+4. **Sticky footer** — apply to all pages
+5. **Images** — apply `width: 100%; height: auto` to all images in the project
 
-**Stretch Challenge** use BEM for class names. 
+Test each change at mobile (375px) and desktop (1024px+) in browser dev tools.
 
-https://css-tricks.com/bem-101/
-
-BEM stands for Block, Element, Modifier, and it is a popular front-end development methodology for creating reusable and maintainable code. BEM is based on the idea of breaking down user interfaces into small, modular components called blocks. Each block has its own name and encapsulated functionality, and can contain one or more elements, which are the individual parts of the block. Modifiers are used to change the appearance or behavior of blocks and elements, allowing for greater flexibility and customization. BEM is especially useful for larger projects where the codebase can quickly become unmanageable, and helps to promote consistency and clarity in code structure.
-
-**Block**: The block is the main component of BEM, representing a self-contained piece of functionality. Blocks are usually named according to their purpose or meaning. For example, a navigation bar block might be named `nav`:
-
-```HTML
-<div class="nav">
-  ...
-</div>
-```
-
-In a React project the Component name might be the name of a block. 
-
-**Element**: An element is a part of a block, representing a smaller component within the larger whole. Elements are named with a double underscore (`__`) followed by the name of the element. For example, a button element within a navigation block might be named `nav__button`:
-
-```HTML
-<div class="nav">
-  <button class="nav__button">Home</button>
-  ...
-</div>
-```
-
-**Modifier**: Modifiers are used to modify the appearance or behavior of a block or element. Modifiers are named with a double hyphen (`--`) followed by the name of the modifier. For example, a modifier that changes the color of a button might be named `nav__button--red`:
-
-```HTML
-<div class="nav">
-  <button class="nav__button nav__button--red">Home</button>
-  ...
-</div>
-```
-
-Using BEM in this way helps to keep the code modular and maintainable, as each component is self-contained and can be reused across the site without fear of causing conflicts or breaking styles.
-
-Read more about BEM: https://getbem.com
-
-## Responsive images 
-
-There are two ways to look at repsonsive images. 
-
-**Method 1** scale the image to fit the available space. 
-
-Give the image `width: 100%` is should expand to fill it's container. If the container changes size the image will expand or contract to match. 
-
-https://web.dev/learn/design/responsive-images/
-
-**Method 2** provide a higher or lower resolution image depnding on the size of the device. 
-
-Follow the article below. In short you'll use the `srcset` attribute to provide alternative images at different sizes. 
-
-```HTML
-<img
-  src="small-image.png"
-  alt="A description of the image."
-  width="300"
-  height="200"
-  loading="lazy"
-  decoding="async"
-  srcset="small-image.png 300w,
-    medium-image.png 600w,
-  large-image.png 1200w"
-  sizes="(min-width: 66em) 33vw,
-    (min-width: 44em) 50vw,
-    100vw"
->
-```
-
-https://web.dev/learn/design/responsive-images/#deliver-your-images
-
-**Note!** This last method could also work serverside code. Since we don't have a server for this example we won't use it, but you should know that it is available. 
-
-Any request to the server will include user agent data as part of the HTTP header. This provides the server a lot information about the device making the request, this includes the platform, OS, and browser versions. This could be used to customize CSS, HTML, and image that is served. 
-
-## Hiding things on mobile/desktop
-
-Sometimes you will run into a situation where you need to have two elements one for mobile and one for desktop. This could be a side menu that is used on mobile and a nav bar used on the desktop. Imagine that you can't reuse one for the other. 
+**Stretch challenge:** On the nav bar, use Flexbox to push nav links to the right while keeping the site title on the left:
 
 ```css
-.nav-bar {
-  display: block; /* Displays the nav bar */
-}
-
-.side-menu {
-  display: none; /* hides the side menu */
-}
-
-@media screen and (max-width: 480px) {
-  .nav-bar {
-    display: none; /* hides the nav bar */
-  }
-  
-  .side-menu {
-    display: block; /* displays the side menu */
-  }
+.Title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 ```
 
-Here the nav bar is visible when the screen is larger that 480px and the side-menu is hidden. When the screen size is 480px or smaller the opposite is true. 
+---
 
-## Homework
+## Assess your work
 
-Continue working on your site making the changes to implement your responsive layout. 
+| Category | Does not meet | Meets | Exceeds |
+|----------|--------------|-------|---------|
+| Stack to row | No flex-direction changes across breakpoints | Detail page switches between column and row correctly | Multiple layout areas use stack-to-row, applied appropriately |
+| Content order | No use of `order` where wireframe calls for reordering | `order` used correctly to match wireframe | Order changes only applied inside media queries (not affecting desktop) |
+| Images | Images overflow or distort at some sizes | All images are fluid (`width: 100%; height: auto`) | `object-fit` used for fixed-height image containers |
+| Sticky footer | Footer floats up on short pages | Sticky footer works on all pages | Tested on multiple page types (short and long content) |
