@@ -1,199 +1,227 @@
-# Accessibility Part 2
+# Class 7: ARIA and Color Contrast
 
-Modifying an existing site to improve accessibility. 
+Semantic HTML gets you most of the way to an accessible site. ARIA fills the gaps — it communicates state, labels elements that have no visible text, and describes dynamic behavior that HTML alone can't express.
 
+## Objectives
 
-- Semantic HTML
-- What is ARIA 
-- What are roles? 
-- ARIA states and properties
+- Apply ARIA attributes to interactive components
+- Label icon-only buttons and controls correctly
+- Communicate open/closed state with `aria-expanded`
+- Check and fix color contrast across the site
 
-## Semantic HTML and Web Accessibility
+---
 
-Semantic HTML, which refers to the use of HTML elements that carry meaning and convey the structure and purpose of content, plays a crucial role in web accessibility. Here's how semantic HTML can impact web accessibility:
+## What is ARIA?
 
-- Enhances Screen Reader Accessibility: Semantic HTML elements, such as headings, paragraphs, lists, and form inputs, provide meaningful information to screen readers, allowing users to navigate and understand the content more effectively.
-- Improves Keyboard Accessibility: Semantic HTML elements are naturally keyboard accessible, meaning they can be easily navigated and interacted with using the keyboard alone. This is important for users who rely on keyboard navigation due to motor disabilities or other reasons.
-- Supports Responsive Design: Semantic HTML provides a clear structure and hierarchy to web content, which is crucial for responsive web design. By using semantic elements like `<header>`, `<nav>`, `<main>`, `<aside>`, and `<footer>`, web developers can create a well-structured document that is easily adaptable to different screen sizes and devices.
-- Facilitates SEO: Semantic HTML elements help search engines understand the structure and meaning of web content, which can improve search engine optimization (SEO). Properly using semantic elements, such as `<h1>` for headings and `<p>` for paragraphs, can make content more accessible and discoverable for search engines and users alike.
-- Provides Context and Clarity: Semantic HTML elements convey the intended purpose and meaning of content, making it more understandable and usable for all users. For example, using `<figure>` and `<figcaption>` elements for images, `<cite>` for citations, and `<blockquote>` for quotes can provide additional context and clarity to the content.
-- Enhances Assistive Technology Support: Many assistive technologies, including screen readers, rely on semantic HTML elements to interpret and present web content to users with disabilities. By using semantic HTML, web developers ensure that their content is compatible with a wide range of assistive technologies, improving accessibility for users with disabilities.
+ARIA (Accessible Rich Internet Applications) is a set of HTML attributes that add semantic meaning screen readers can't get from HTML structure alone.
 
-In summary, using semantic HTML in web development improves web accessibility by providing meaningful structure, supporting assistive technologies, enhancing keyboard accessibility, facilitating responsive design, improving SEO, and providing clarity and context to web content. It is an essential practice for creating inclusive and accessible web experiences.
+**The first rule of ARIA:** don't use it if a native HTML element does the job. A `<button>` is already announced as a button. A `<nav>` is already announced as navigation. ARIA is for filling gaps, not replacing semantic HTML.
 
-**Challenge** Look through your SFPOPOS site and upgrade all of the generic tags with semantic tags to improve accessibility and SEO. 
+Three types of ARIA attributes:
+- **Roles** — what an element is (`role="dialog"`, `role="alert"`)
+- **Properties** — what an element is like (`aria-label`, `aria-describedby`, `aria-required`)
+- **States** — what an element is doing right now (`aria-expanded`, `aria-checked`, `aria-disabled`)
 
-For example: The nav bar at the top of the page is top level navigation as such it should use the `<nav>` tag. 
+---
 
-```HTML
-<!-- Uses the div tag around navigation -->
-<div className="Title__nav" role="navigation">
-	<NavLink 
-		className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-		to="/">List</NavLink>
-	<NavLink 
-		className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-		to="/about">About</NavLink>
-	<RandomSpace />
-</div>
+## The Most Useful ARIA Attributes
+
+### `aria-label`
+
+Provides a text label for elements with no visible text. Most common use: icon-only buttons.
+
+```html
+<!-- Without aria-label, screen reader says "button" — useless -->
+<button>
+  <svg><!-- hamburger icon --></svg>
+</button>
+
+<!-- With aria-label, screen reader says "Open navigation menu" -->
+<button aria-label="Open navigation menu">
+  <svg><!-- hamburger icon --></svg>
+</button>
 ```
 
-Becomes: 
+Every icon button needs an `aria-label`. This includes your hamburger menu, any close buttons, social media icons, and search buttons.
 
-```HTML
-<!-- Better to use the nav tag here!  -->
-<nav className="Title__nav" role="navigation">
-	<NavLink 
-		className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-		to="/">List</NavLink>
-	<NavLink 
-		className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-		to="/about">About</NavLink>
-	<RandomSpace />
+### `aria-expanded`
+
+Communicates whether a collapsible element (menu, accordion, dropdown) is open or closed. Critical for hamburger menus.
+
+```jsx
+const [isOpen, setIsOpen] = useState(false)
+
+<button
+  aria-label="Open navigation menu"
+  aria-expanded={isOpen}
+  onClick={() => setIsOpen(!isOpen)}
+>
+  <svg><!-- hamburger icon --></svg>
+</button>
+
+<nav aria-hidden={!isOpen}>
+  {/* nav links */}
 </nav>
 ```
 
-The header tag around the navbar should use the header tag: 
+When `aria-expanded` is `false`, screen readers announce "Open navigation menu, collapsed." When `true`: "Open navigation menu, expanded." The user knows the state without seeing it.
 
-```HTML
-<!-- The header uses the div tag -->
-<div className="Title">
-	<div>
-		<h1>SFPOPOS</h1>
-		<small className="Title-Subtitle">San Francisco Privately Owned Public Open Spaces</small>
-	</div>
-	<nav className="Title__nav" role="navigation">
-		<NavLink 
-			className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-			to="/">List</NavLink>
-		<NavLink 
-			className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-			to="/about">About</NavLink>
-		<RandomSpace />
-	</nav>
-</div>
+### `aria-hidden`
+
+Hides an element from the accessibility tree. Use it for decorative elements that add visual noise without meaning.
+
+```html
+<!-- Decorative icon next to labeled text — hide the icon -->
+<span aria-hidden="true">★</span>
+<span>Favorite</span>
+
+<!-- Closed menu — hide from screen readers entirely -->
+<nav aria-hidden="true">...</nav>
 ```
 
-Becomes: 
+Don't use `aria-hidden="true"` on elements that contain focusable content — keyboard users will still reach them.
 
-```HTML
-<!-- Better to use the header tag! -->
-<header className="Title">
-	<div>
-		<h1>SFPOPOS</h1>
-		<small className="Title-Subtitle">San Francisco Privately Owned Public Open Spaces</small>
-	</div>
-	<nav className="Title__nav" role="navigation">
-		<NavLink 
-			className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-			to="/">List</NavLink>
-		<NavLink 
-			className={({ isActive }) => isActive ? "nav-link-active" : "nav-link" }
-			to="/about">About</NavLink>
-		<RandomSpace />
-	</nav>
-</header>
+### `aria-labelledby`
+
+Points to another element as the label. Use when the label already exists in the DOM.
+
+```html
+<h2 id="spaces-heading">Public Spaces</h2>
+<section aria-labelledby="spaces-heading">
+  <!-- section content -->
+</section>
 ```
 
-Continue through all of your components and repeat the process. 
+Screen readers announce the section as "Public Spaces region" without duplicating any text.
 
-- `<header>`: Used to define the header or the top section of a web page or a section within a web page. It typically contains branding, logos, navigation menus, and other introductory content.
-- `<nav>`: Used to define a navigation section of a web page. It typically contains links to other pages or sections of the website.
-- `<main>`: Used to define the main content area of a web page. It should not include headers, footers, or sidebars, and should represent the primary content of the page.
-- `<aside>`: Used to define content that is tangentially related to the content around it, such as sidebars, pull quotes, or additional information.
-- `<article>`: Used to define a self-contained piece of content that could be distributed and reused independently, such as a news article, blog post, or forum post.
-- `<section>`: Used to define a section of content that is thematically related and can be treated as an independent unit, such as a group of related articles, a group of related form elements, or a group of related images.
-- `<figure>`: Used to define any content that is referenced from the main content, such as an image, a chart, or a video.
-- `<figcaption>`: Used to provide a caption or description for a <figure> element.
-- `<footer>`: Used to define the footer or the bottom section of a web page or a section within a web page. It typically contains copyright information, contact details, and other auxiliary content.
-- `<blockquote>`: Used to define a block of quoted content, such as a quote from another source or a citation.
+### `aria-describedby`
 
-Pay close attention to the figure tag. The page is full images that represent real world locations, these are important and relavent content. The figure and figcaption tags can help describe these elements for accessability. 
+Points to an element that provides additional description — form hints, error messages.
 
-## ARIA
-
-ARIA (Accessible Rich Internet Applications) attributes are HTML attributes that can be used to improve the accessibility of web content for individuals with disabilities. These attributes can be added to HTML tags to provide additional information about the function, purpose, or state of an element, such as a button, form, or widget.
-
-ARIA attributes include **roles**, which define the type or category of an element, such as "button", "listbox", or "menu", and states, which describe the current condition or value of an element, such as "selected", "disabled", or "expanded". ARIA attributes also include properties, which provide additional information about an element, such as "aria-label" to provide a label for an element or "aria-describedby" to provide a description of an element.
-
-Using ARIA attributes can improve the accessibility of web content by making it easier for individuals with disabilities to interact with a website. For example, ARIA attributes can help screen readers interpret the purpose and function of different elements on a webpage, allowing users with visual impairments to navigate and interact with the content more easily. By providing this additional information, web developers can ensure that their websites are accessible to a wider range of users, including those with disabilities.
-
-**ARIA examples**
-
-ARIA role for navigation menus: If a website has a navigation menu, it's important to make sure that it is accessible to all users, including those who use screen readers. One way to do this is to use the ARIA role attribute to identify the menu as a navigation landmark. For example, the following code could be used to mark up a navigation menu with the ARIA role of "navigation":
-
-```HTML
-<!-- ARIA role attribute marks this as navigation -->
-<nav role="navigation">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>
+```html
+<label for="email">Email</label>
+<input type="email" id="email" aria-describedby="email-hint">
+<span id="email-hint">We'll never share your email.</span>
 ```
 
-By adding the role attribute with a value of "navigation", screen readers will be able to identify the navigation menu as a distinct landmark on the page, making it easier for users to navigate to the content they are looking for.
+### `aria-current`
 
-ARIA attribute for form inputs: Forms are an important part of many websites, but they can be challenging for users with disabilities to complete. ARIA attributes can help make forms more accessible by providing additional information about form inputs. For example, the following code could be used to add a label and description to a text input field:
+Marks the current item in a set — current page in nav, current step in a process.
 
-```HTML
-<label for="name">Name:</label>
-<input type="text" id="name" aria-describedby="name-description">
-<!-- The ARIA attribute above says the input is described by the tag below -->
-<span id="name-description">Enter your full name.</span>
+```jsx
+<NavLink
+  to="/"
+  aria-current={isActive ? "page" : undefined}
+>
+  List
+</NavLink>
 ```
 
-In this example, the "for" attribute on the label element is used to associate the label with the input field, while the "aria-describedby" attribute on the input element is used to associate it with a description of the input field. Screen readers can then read out the label and description together, making it easier for users to understand the purpose of the input field.
+React Router's `NavLink` handles this automatically if you use its `isActive` pattern, but it's worth knowing what's happening under the hood.
 
-Take a look at the ARIA attributes page over at Mozilla: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
+---
 
-Look at the list of ARIA roles: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+## ARIA Roles
 
-**Challenge** Add ARIA attributes to your site. Identify everything that you can that would be improved by adding ARIA roles or other attributes.
+Only use `role` when you can't use the correct semantic element.
 
-React docs also have an ARIA page, you should read this: https://legacy.reactjs.org/docs/accessibility.html
+```html
+<!-- If you must use a div as a button (avoid this when possible) -->
+<div role="button" tabindex="0" onclick="...">Click me</div>
 
-https://www.lullabot.com/articles/what-heck-aria-beginners-guide-aria-accessibility
+<!-- But prefer actual button -->
+<button onclick="...">Click me</button>
+```
 
-ARIA attributes come in two categories: roles and states. Roles provide semantic meaning to content. States describe the "state" of an element. The first is easy. The second is pretty broad.
+Common roles you might need:
+- `role="dialog"` — modal dialog boxes
+- `role="alert"` — important message that screen reader announces immediately
+- `role="status"` — non-urgent status update (form saved, item added to cart)
+- `role="tab"` / `role="tabpanel"` — tab interface
 
-- [ARIA Roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
-- [ARIA States](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)
+```html
+<!-- Announce a success message without moving focus -->
+<div role="alert">Your changes have been saved.</div>
+```
 
-For now focus on roles. As a stretch goal read the states lists and find opportunity for these in your page. 
+---
 
-### Color and contrast 
+## Color and Contrast
 
-Contrast is the difference in value between two colors. The value of a color is how dark or light a color would appear if you converted it to gray scale. Red for example is is about 50% gray. Blue is often darker and yellow is often lighter. 
+Low contrast is one of the most common accessibility failures. Text that looks fine to most sighted users can be unreadable for people with low vision or color blindness.
 
-It's the value difference that that makes things stand out and the lack of contrast makes things harder to read.
+**WCAG contrast requirements:**
 
-Contrast has been rated for accessibility. Use this site to check your colors. 
+| Text type | Minimum ratio (AA) |
+|-----------|-------------------|
+| Normal text (< 18pt or < 14pt bold) | 4.5:1 |
+| Large text (≥ 18pt or ≥ 14pt bold) | 3:1 |
+| UI components (borders, icons) | 3:1 |
 
-https://webaim.org/resources/contrastchecker/
+Contrast ratio is the difference in luminance between foreground and background. 1:1 = no contrast (same color), 21:1 = maximum (black on white).
 
-NOTE! For text font size and weight matter. Smaller fonts, and lighter weight fonts are harder to read and require more contrast! Becuase two colors work at one point size doesn't mean they are legible to everyone at every point size. 
+**Check your contrast:**
 
-**Challenge** Check the color and contrast on your site. Enter the colors into the [WEBAIM Constrast checker](https://webaim.org/resources/contrastchecker/) and check the score. Adjust the contrast for failing scores. 
+Use the WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
+
+Enter your foreground and background colors. The tool tells you whether you pass AA or AAA for each text size.
+
+Common failures:
+- Light gray text on white (`#aaaaaa` on `#ffffff` = 2.3:1 — fails)
+- White text on medium-blue (`#ffffff` on `#4a90e2` = 3.0:1 — fails for normal text)
+- Placeholder text in inputs (almost always too light)
+
+**Don't rely on color alone.** If you use color to communicate status (red = error, green = success), also use an icon, text, or pattern. Colorblind users can't distinguish red from green.
+
+```html
+<!-- Bad — color only -->
+<span style="color: red">Invalid email</span>
+
+<!-- Good — color + icon + text -->
+<span style="color: red">
+  <span aria-hidden="true">✗</span> Invalid email address
+</span>
+```
+
+---
 
 ## Challenge
 
-Update your responsive site using the accessibility best practices. 
+**Part 1: Hamburger menu ARIA**
 
-### Accessibility Best Practices
+If you've started building your hamburger menu, add:
+- `aria-label` on the toggle button
+- `aria-expanded` tied to the open/closed state
+- `aria-hidden` on the nav when closed
 
-1. **Use semantic HTML** – Headings, lists, buttons, and forms should use proper tags.
-2. **Provide text alternatives** – Add meaningful `alt` text for images.
-3. **Ensure keyboard accessibility** – All functionality should work without a mouse (e.g., tab navigation).
-4. **Maintain color contrast** – Text should have a minimum 4.5:1 contrast ratio against backgrounds.
-5. **Don’t rely on color alone** – Use text, icons, or patterns in addition to color cues.
-6. **Use clear, descriptive links** – Avoid “click here” or “read more.”
-7. **Provide labels and instructions** – Forms must have visible labels or ARIA labels.
-8. **Use headings logically** – Structure content in order (`h1`, then `h2`, etc.).
-9. **Provide captions/transcripts** – For videos and audio.
-10. **Avoid flashing/strobing content** – To prevent seizures.
-11. **Make text resizable** – Support zoom without breaking layout.
-12. **Test with screen readers and tools** – NVDA, VoiceOver, Lighthouse, WAVE.
+If you haven't built the hamburger yet, annotate your wireframe with these ARIA attributes — you'll implement them in class-8.
 
+**Part 2: Icon audit**
 
+Find every icon-only interactive element in SFPOPOS. Add `aria-label` to each one.
+
+**Part 3: Contrast check**
+
+Using the WebAIM Contrast Checker, check every text/background color combination in your SFPOPOS site:
+- Body text on background
+- Nav link text on nav background  
+- Card text on card background
+- Button text on button background
+- Any placeholder text in forms
+
+Document which pass and which fail. Fix the failures by adjusting color values until the ratio meets 4.5:1 for normal text.
+
+**Part 4: Re-run Lighthouse**
+
+After making ARIA and contrast fixes, re-run your Lighthouse accessibility audit. Your score should have increased from class-6.
+
+---
+
+## Assess your work
+
+| Category | Does not meet | Meets | Exceeds |
+|----------|--------------|-------|---------|
+| Icon labels | Icon buttons have no labels | All icon-only buttons have `aria-label` | Labels are specific and descriptive ("Open navigation menu" not "menu") |
+| `aria-expanded` | Not used | Used on hamburger or collapsible element, tied to open/closed state | State updates correctly on toggle, `aria-hidden` used on the controlled element |
+| Contrast | Multiple contrast failures | All normal text passes 4.5:1 | All text including placeholders and UI components passes WCAG AA |
+| Lighthouse score | Lower than class-6 score | Same or higher than class-6 score | 90+ |
