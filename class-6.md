@@ -1,132 +1,201 @@
-# Accessibility and Inclusive Design
+# Class 6: Accessibility and Inclusive Design
 
-Objective: Students will learn the principles of accessibility and inclusive design, and how to implement them in web development. They will also learn how to use tools like screen readers and browser plugins to test the accessibility of their websites.
+Accessibility is the practice of building websites that work for everyone — including people with visual, auditory, motor, and cognitive disabilities. This class covers why it matters, how to build accessibly from the start, and how to test what you've built.
 
-### What is accessibility?
+## Objectives
 
-Accessibility in web development refers to designing and developing websites that can be used by people with disabilities or impairments. This ensures that all users, regardless of their abilities, can access web content and services. 
+- Explain why accessibility matters for developers (legal, ethical, business)
+- Apply semantic HTML to improve screen reader and keyboard accessibility
+- Write meaningful alt text for images
+- Test a site with keyboard navigation and browser accessibility tools
 
-Accessibility is crucial because it promotes inclusivity, improves user experience, enhances search engine optimization, expands the reach of a website, and mitigates legal risks. By ensuring accessibility, web developers can create a more inclusive digital world where everyone has equal access to information and services.
+---
 
-**Laws and regulations related to accessibility (e.g. Americans with Disabilities Act)**
+## Why Accessibility Matters
 
-It is important for web developers to be aware of laws and regulations related to accessibility, such as the Americans with Disabilities Act (ADA), Section 508 of the Rehabilitation Act, and the Web Content Accessibility Guidelines (WCAG). These regulations ensure that websites are accessible to individuals with disabilities, such as those who are blind or have low vision, deaf or hard of hearing, or have physical or cognitive disabilities. Compliance with these laws and regulations not only ensures equal access for individuals with disabilities but also mitigates legal risks for businesses and organizations. Therefore, web developers should incorporate accessibility into their development process to ensure compliance with these regulations and promote inclusivity for all users.
+**Legal:** The Americans with Disabilities Act (ADA) and Section 508 of the Rehabilitation Act require accessibility for government and many commercial websites. Businesses have faced lawsuits for inaccessible websites — this is not theoretical.
 
-**Common barriers to accessibility (e.g. visual, auditory, motor impairments)** 
+**Scale:** Roughly 1 in 4 adults in the US has some form of disability. Globally, over 1 billion people have a disability that affects how they use the web. An inaccessible site excludes a significant portion of your potential users.
 
-Accessibility barriers are obstacles that prevent individuals with disabilities from accessing and using digital content and services. Common barriers to accessibility include visual impairments, such as blindness or low vision, auditory impairments, such as deafness or hard of hearing, and motor impairments, such as difficulty using a mouse or keyboard. Other barriers may include cognitive or neurological impairments, such as dyslexia, autism, or environmental factors, such as poor lighting or loud background noise. These barriers can prevent individuals with disabilities from fully participating in the digital world, including accessing educational resources, conducting online transactions, and engaging in social media. 
+**SEO:** Accessibility improvements — semantic HTML, alt text, logical heading structure — are the same things search engines use to understand your content. Accessible sites rank better.
 
-To ensure accessibility for all users, web developers should consider these barriers when designing and developing digital content and services and provide alternative formats or assistive technologies to accommodate different types of disabilities.
+**Code quality:** Accessible code is better code. Proper semantic structure, clear labels, and logical tab order make sites easier to maintain and debug.
 
-### Inclusive design principles
+The Web Content Accessibility Guidelines (WCAG) are the technical standard. Most legal requirements reference WCAG 2.1 Level AA compliance.
 
-Suppose a web developer is creating a new e-commerce site. To ensure diversity and inclusivity, the developer could design the site's interface to be easily navigable using assistive technologies, such as screen readers, for users with visual impairments. They could also provide alternative formats for visual content, such as image descriptions, to make the content accessible to users who are blind or have low vision. 
+---
 
-Additionally, the developer could consider the language and cultural background of the site's target audience, using clear and concise language and avoiding cultural stereotypes that could exclude certain groups of people. _Finally, the developer could conduct user testing with people from a diverse range of backgrounds and abilities to ensure that the site is usable and accessible to as many people as possible.
+## Semantic HTML
 
-**Challenge** Turn on Voice over and follow the tutorial.
+Semantic HTML means using the right HTML element for the right purpose. Browsers and screen readers use element type to understand the role of content — a `<nav>` is navigation, a `<button>` is interactive, an `<h1>` is a top-level heading.
 
-A large portion of the world is browsing the web with accessibility features. To reach this audience it is important to understand accessibility. 
+Using `<div>` for everything strips that meaning.
 
-https://accessiblyapp.com/blog/web-accessibility-statistics/
+**Common semantic elements and when to use them:**
 
-**Challenge:** Considering the information above what changes need to be made to the SFPOPOS site? 
+| Element | Use for |
+|---------|---------|
+| `<header>` | Site header or section header |
+| `<nav>` | Navigation links |
+| `<main>` | Primary page content (one per page) |
+| `<section>` | Thematically grouped content |
+| `<article>` | Self-contained content (blog post, card) |
+| `<aside>` | Secondary content, sidebars |
+| `<footer>` | Site footer or section footer |
+| `<figure>` + `<figcaption>` | Image with caption |
+| `<button>` | Anything the user clicks to trigger an action |
+| `<a>` | Navigation to another page or location |
 
-- Considering the paragraphs above, how would you rewrite your user stories?
-- What changes to text content and labeling need to be made to your site?
-- Are there any changes you can make that would make the site more engaging to a wider audience? 
+**SFPOPOS example — before:**
 
-Why?
+```jsx
+<div className="Title">
+  <div className="Title__nav">
+    <NavLink to="/">List</NavLink>
+    <NavLink to="/about">About</NavLink>
+  </div>
+</div>
+```
 
-Designing for diversity and inclusivity is important because it ensures that digital content and services are accessible and usable by the widest possible audience. By considering the needs of individuals with different abilities, cultural backgrounds, and experiences, web developers can create content and services that are more inclusive, welcoming, and engaging to a broader range of people. This can lead to increased engagement, better user experiences, and ultimately, greater success for businesses and organizations. Moreover, designing for diversity and inclusivity promotes ethical and moral principles of equality and social justice, contributing to a more inclusive and equitable society.
+**After:**
 
-**Prioritizing user needs and preferences**
+```jsx
+<header className="Title">
+  <nav className="Title__nav">
+    <NavLink to="/">List</NavLink>
+    <NavLink to="/about">About</NavLink>
+  </nav>
+</header>
+```
 
-Prioritizing user needs and preferences in web development involves understanding and designing for the goals and behaviors of the website's target audience. This approach is user-centered and puts the needs and preferences of users at the forefront of the design process. User research and feedback are essential for identifying user needs and preferences and determining which features and functionalities are most important to them. This information can inform the design and development of the website, ensuring that it meets the needs and preferences of its users.
+Same visual result. Completely different meaning to a screen reader.
 
-**Challenge**
+---
 
-- What questions would you ask when conducting user research to improve the SFPOPOS site?
+## Alt Text
 
-Prioritizing user needs and preferences is important because it leads to a better user experience and higher user engagement. When users can easily find the information or services they need and the website is designed in a way that resonates with them, they are more likely to spend time on the site, return to it in the future, and share it with others. Moreover, user-centered design can lead to a competitive advantage, as users are more likely to choose a website that meets their needs over one that does not. Therefore, prioritizing user needs and preferences is a key consideration for web developers who want to create effective and successful websites.
+Every `<img>` needs an `alt` attribute. Screen readers read it aloud in place of the image.
 
-**Providing multiple ways to access information and perform actions**
+**Rules:**
+- Describe what the image communicates, not what it looks like
+- If the image is purely decorative, use `alt=""` (empty string — tells screen reader to skip it)
+- Don't start with "Image of..." or "Photo of..." — screen readers already announce it's an image
+- Be specific: `alt="Interior courtyard at 101 California with benches and trees"` not `alt="courtyard"`
 
-Providing multiple ways to access information and perform actions is an important consideration in web development to ensure that all users, regardless of their abilities or technological limitations, can access the content and functionalities of a website.
+```html
+<!-- Bad -->
+<img src="space.jpg" alt="image">
 
-Multiple ways of access could include providing alternative text descriptions for images, videos or other visual content, so that users with visual impairments can understand what is being displayed. Another example could be offering keyboard shortcuts and alternative input methods, such as voice commands or touch gestures, to accommodate users with mobility impairments who may not be able to use a mouse or standard keyboard.
+<!-- Decorative — skip it -->
+<img src="divider.png" alt="">
 
-Providing multiple ways of access is important because it ensures that all users can interact with a website, regardless of their abilities or technological limitations. **This promotes inclusivity and reduces the risk of exclusion, which can occur when a website is designed with only one type of user in mind.** By providing multiple ways of access, web developers can ensure that users with disabilities, as well as those who may have limited access to technology or slow internet connections, can still engage with a website and its content in a meaningful way. This can lead to increased engagement and satisfaction for all users, regardless of their backgrounds and abilities.
+<!-- Good -->
+<img src="space.jpg" alt="Rooftop garden at 555 Mission St with seating area and city views">
+```
 
-**Challenge:** Make a list of the things that limit a users ability to access your site? 
+---
 
-### Techniques for accessible web development
+## Keyboard Navigation
 
-Consider your the SFPOPOS site and consider the list below. Find the elements on the list that exist and ask yourself if they are adequate. Indentify the things that are missing and consider how you can implement these. 
+Every interactive element on your site should be reachable and usable with a keyboard alone. Users with motor disabilities navigate by keyboard. So do power users.
 
-- **Semantic HTML** (You've used this before!)
-- **Alt text for images** (You've also seen this!)
-- **ARIA attributes** Read about ARIA here: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
-- **Proper use of color and contrast** Check your color and contrast here: https://webaim.org/resources/contrastchecker/
-- **Keyboard navigation** Read up about accessibility and keyboard navigation: https://www.smashingmagazine.com/2022/11/guide-keyboard-accessibility-html-css-part1/
-- **Captions and transcripts** (for video and audio content) 
+**Test it now:**
+1. Open your SFPOPOS site
+2. Don't touch the mouse
+3. Press Tab to move forward through interactive elements, Shift+Tab to go back
+4. Press Enter or Space to activate buttons and links
 
-### Tools for testing accessibility
+What to check:
+- Can you reach every link and button?
+- Can you tell where you are? (focus indicator — the outline around the focused element)
+- Does the tab order make sense? (usually top-to-bottom, left-to-right)
+- Can you use the nav, click cards, and navigate to detail pages?
 
-You'll use the tools below to navigate a web site of your choice. Pick a website you use everyday. Browse it with in accessibility mode doing all of the things you would normally do. Repeat the process with your SFPOPOS site. 
+**Never remove the focus outline** with `outline: none` unless you replace it with a custom visible indicator. Removing it breaks keyboard navigation for sighted keyboard users.
 
-- Screen readers (e.g. NVDA, VoiceOver)
-- Browser plugins (e.g. WebAIM's WAVE tool)
-- Keyboard-only navigation (You'll use the tab key in accessibility mode)
+```css
+/* Bad — hides focus completely */
+:focus { outline: none; }
 
-Second you'll use one the tools below to check the accessibility features of the site you chose. 
+/* Good — custom focus style */
+:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+```
 
-You will also check the color contrast for colors on the site. Do this for any background color where text appears. 
+---
 
-- WAVE Chrome extension idenitifies accessibilities in the borwser. 
+## Headings
+
+Screen reader users navigate pages by jumping between headings. The heading structure is like a table of contents — it needs to make sense in order.
+
+- One `<h1>` per page (the page title)
+- `<h2>` for major sections
+- `<h3>` for subsections
+- Don't skip levels (no `<h1>` → `<h3>` without an `<h2>`)
+- Don't choose heading level based on font size — use CSS for size, heading level for structure
+
+---
+
+## Testing Tools
+
+**WAVE** — browser extension that overlays accessibility issues directly on the page. Shows missing alt text, empty links, contrast failures, heading structure.
+
 - https://wave.webaim.org
-- [WAVE Extension instructions](https://www.google.com/search?q=how+to+use+wave+chrome+extension&rlz=1C5CHFA_enUS815US815&oq=how+to+use+the+wave+chrome+&aqs=chrome.1.69i57j0i22i30l2j0i390i650l2.8628j0j7&sourceid=chrome&ie=UTF-8)
-- [Install Lighthouse chrom extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
-- https://webaim.org/resources/contrastchecker/
-- Write better alt text for images: https://accessibility.huit.harvard.edu/describe-content-images
+- Install the Chrome or Firefox extension
 
-## Screen readers 
+**Lighthouse** — built into Chrome DevTools. Run an accessibility audit: right-click → Inspect → Lighthouse tab → Accessibility → Analyze.
 
-To really get a feel for how people with disabilities use a computer try the screen reader. 
+Scores 0–100. Aim for 90+. The report gives specific issues with links to fix them.
 
-- Safari: https://support.apple.com/guide/voiceover/welcome/mac
-- Chrome: https://support.google.com/accessibility/answer/7031755?hl=en
+**VoiceOver (Mac)** — the built-in screen reader. Use it to experience your site the way a blind user does.
 
-## Challenge: What is Accessibility?
+- Turn on: Cmd + F5 (or System Settings → Accessibility → VoiceOver)
+- Navigate: VO key (Caps Lock) + Arrow keys
+- Quick start guide: https://support.apple.com/guide/voiceover/welcome/mac
 
-Answer these questions on GradeScope: 
+Use VoiceOver on a site you use every day first. Then use it on SFPOPOS. The frustration you feel is what inaccessible sites impose on users who have no alternative.
 
-- What is Accessibility in web design and why is it important?
-- Why is semantic HTML and ARIA, and how are they related? 
+---
 
-## Challenge: Accessibility Review!
+## Challenge
 
-Review and evaluate the accessibility of your responsive website. 
+**Part 1: Semantic HTML audit**
 
-- Browse the site with the keyboard and screen reader
-- Run an accessiblity review using the tools above
+Go through every component in your SFPOPOS project. Replace generic `<div>` and `<span>` tags with semantic elements where appropriate. Use the table above as a guide.
 
-Using Lighthouse and WAVE improve your site trying to solve all of the accessibility recommendations, and get the highest scores possible. 
+At minimum:
+- Site header → `<header>`
+- Navigation → `<nav>`
+- Main content area → `<main>`
+- Site footer → `<footer>`
+- Space images → `<figure>` + `<figcaption>`
 
-- Browser the website **with your keyboard** and a screen reader. This is a tedious and annoying process. Do not give up or skip this out of frustration. Sympathize with the segment of the population that does this everyday. 
-- While using the screent identify the areas that can be improved. Look at:
-  - Naming and labels
-  - The order elements appear
-  - Alt text
+**Part 2: Alt text**
 
-If you are unable to use the mouse you'll use the keyboard to navigate. This can be especially frustrating. Put your developer hat on for a few minutes, as if you ever take it off. You can move through each element on the page using the arrow keys. You can also move through navigational and control elements like buttons and text inputs using the tab, and option + tab, and the shift key and you can move backwards. 
+Add meaningful alt text to every image in the project. For the SFPOPOS spaces, write alt text that describes the space (what it looks like, where it is).
 
-To enabled tabbing through the links on a page, in Chrome use the tab key, in Safari use option + tab. 
+**Part 3: Keyboard test**
 
-Notice the order of things on the screen as you tab over them. Does this makes sense? You can control the tab order using the `tabindex` attribute. Read about it here: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+Navigate your entire SFPOPOS site using only the keyboard. Document every place where:
+- You can't reach something
+- You lose track of where you are (no focus indicator)
+- The tab order doesn't make sense
 
-Spend some time playing with this. It gets frustrating really fast. Think about how it would be to use this site every day? The challenge is to reduce the frustration of this process.
+Fix what you can.
 
-Think of all of the ways you can improve the acccessibility of the site you are studying. 
+**Part 4: Run Lighthouse**
 
-Use lighthouse to score your pages. You can do as much work on your site as you like. I will score this assignment on the lowest scoring page. My solution project from the tutorial scored 81%. 
+Run a Lighthouse accessibility audit on each page. Note your score. Fix the issues Lighthouse identifies and re-run. Target 90+.
+
+---
+
+## Assess your work
+
+| Category | Does not meet | Meets | Exceeds |
+|----------|--------------|-------|---------|
+| Semantic HTML | Mostly `<div>` tags, no semantic structure | Major structural elements use correct semantic tags | All elements use appropriate semantic tags, structure makes sense as an outline |
+| Alt text | Missing or generic (`alt="image"`) | All images have descriptive alt text | Alt text is specific and meaningful — describes what the image communicates |
+| Keyboard navigation | Major elements unreachable by keyboard | All interactive elements reachable and usable by keyboard | Tab order is logical, focus indicator is visible on all elements |
+| Lighthouse score | Below 70 | 70–89 | 90+ |
