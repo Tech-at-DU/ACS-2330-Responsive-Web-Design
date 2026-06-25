@@ -1,6 +1,6 @@
 # Class 2: Wireframes to Code
 
-Students arrive with wireframes from the class-1 homework. This session finishes the wireframes and translates them into a CSS implementation plan.
+You should have your wireframes from class 1 homework. In this session you will finish your wire framing, and start translating these into a CSS implementation plan. 
 
 ## Objectives
 
