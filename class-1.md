@@ -80,7 +80,7 @@ By following these steps, you can create a clear and effective wireframe for you
 Developer-specific wireframing tips:
 
 1. **Start with mobile** — draw the phone layout first. What fits? What doesn't? What has to move or collapse?
-2. **Label every element** — you'll be writing CSS class names for these. Vague boxes become vague code.
+2. **Label every element** — you'll be writing CSS class names for these. Vague boxes become vague code. Match the labels from mobile to desktop to make it clear what moves and things change between layouts. 
 3. **Mark what changes between sizes** — annotate the wireframe: "this becomes 2 columns on desktop", "this nav collapses to hamburger on mobile."
 4. **Keep it simple** — rectangles, lines, and text labels. No color, no fonts, no images. You're writing a spec, not doing design.
 5. **Focus on layout and order** — think about which elements appear first on mobile (top of page = most important on a phone).
@@ -118,11 +118,11 @@ Plan the responsive version of your SFPOPOS site. This is a planning exercise �
 **Step 3. Draw wireframes — mobile first.** For each page, draw mobile layout first, then desktop. Annotate every responsive change using this notation:
 
 ```
-[mobile] → [desktop]
-1 col    → 3 col
-stacked  → side by side  
-hamburger → full nav
-hidden   → visible
+[mobile]   → [desktop]
+1 col      → 3 col
+stacked    → side by side  
+hamburger  → full nav
+hidden     → visible
 full width → 50% width
 ```
 
