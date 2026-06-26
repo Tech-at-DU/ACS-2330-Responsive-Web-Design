@@ -97,7 +97,7 @@ Sometimes mobile and desktop need completely different elements — a hamburger 
 
 ```css
 /* Default (mobile): show hamburger, hide full nav */
-.nav-full     { display: none; }
+.nav-full      { display: none; }
 .nav-hamburger { display: block; }
 
 @media (min-width: 768px) {
