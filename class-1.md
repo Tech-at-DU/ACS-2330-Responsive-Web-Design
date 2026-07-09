@@ -46,15 +46,18 @@ Now find these techniques in real sites. Each group takes one site, views it on 
 
 Each group presents findings. Reference the technique names from the table above — you'll use these terms all semester.
 
-## Approaches to responsive design
-Responsive design is a design approach that aims to create websites that can adapt to different screen sizes and devices. The principles of responsive design involve using flexible layouts, fluid images, and media queries to ensure that the website looks good and functions well on any device.
+## The four tools of responsive design
 
-1. **Flexible Layouts**: A flexible layout means that the design is not fixed to a specific width or height. Instead, the layout can change and adjust to the available space on the device. This is typically achieved by using relative units like percentages instead of absolute units like pixels for widths and heights. Often you will use layout properties like Flex and Grid with special units like fr (fraction.)
-2. **Fluid Images**: Images are an essential part of any website, and they need to be flexible too. A fluid image can adjust its size based on the available space without losing its aspect ratio. This is typically achieved by using the max-width property in CSS.
-3. **Media Queries**: Media queries are CSS rules that allow designers to target specific devices based on their screen size or other properties. By using media queries, designers can create different stylesheets that apply to different devices. For example, a designer might create a separate stylesheet for small screens like smartphones, which contains styles that are optimized for that screen size.
-4. **Responsive Units**: Responsive units are units of measurement that adjust based on the screen size or device. Two commonly used responsive units are em and rem. Em is a relative unit based on the font size of the parent element, while rem is a relative unit based on the font size of the root element (typically the HTML element). By using responsive units, designers can create flexible layouts that adjust based on the user's device.
+These are the CSS tools you'll use throughout this course. You don't need to master them today — just know what each one does. You'll build with all four over the next several weeks.
 
-Overall, the principles of responsive design aim to create a website that provides a great user experience regardless of the user's device. By using flexible layouts, fluid images, media queries, and responsive units, designers can create websites that are optimized for different screen sizes and devices.
+| Tool | What it does | When you'll use it |
+|------|-------------|-------------------|
+| **Media queries** | Apply different CSS at different screen widths | Classes 3–4 |
+| **Flexbox** | Arrange elements in a row or column, control spacing | Classes 4–8 |
+| **CSS Grid** | Arrange elements in rows and columns simultaneously | Class 5 |
+| **Responsive units** | Size elements relative to screen or parent (`%`, `vw`, `rem`, `fr`) | Classes 3–4 |
+
+Your wireframes from the homework will map directly to these tools. Every annotation you write — "1 col → 3 col", "stacked → side by side" — has a corresponding CSS property. Class 2 makes that mapping explicit.
 
 ## Wire Framing
 Before writing any code, plan what you're building. As a developer, wireframes serve one purpose: **give you a layout spec to implement**. You're not designing — you're planning your code. Wireframes answer questions like: What moves? What stacks? What disappears? What changes size?
@@ -93,7 +96,18 @@ Developer-specific wireframing tips:
 - https://www.invisionapp.com
 
 ## In Class Challenge (60 mins)
-Using one of the tools above start mocking up the SFPOPOS Site. 
+
+Open Figma (or paper) and wireframe two pages of SFPOPOS — mobile version only.
+
+**By end of class you must have:**
+- Mobile wireframe for the **Home page** (the spaces list)
+- Mobile wireframe for the **Detail page** (one space's detail view)
+
+Use the annotation notation from the wireframing tips: mark column counts, note what the nav does on mobile, mark touch targets. Labels should match the CSS class names already in the project.
+
+Don't start the desktop versions yet — mobile first. The desktop wireframes are homework.
+
+If you finish early: start the About page mobile wireframe, or add annotations to what you have.
 
 ## Homework challenge
 Plan the responsive version of your SFPOPOS site. This is a planning exercise — you're producing a spec you will implement in code over the next few weeks.
