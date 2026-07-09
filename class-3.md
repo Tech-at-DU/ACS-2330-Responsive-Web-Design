@@ -2,6 +2,12 @@
 
 Media queries are the CSS mechanism that makes responsive design work. They let you apply different styles at different screen sizes — the foundation of everything else in this course.
 
+## Warmup (5 mins)
+
+Show your implementation checklist to the person next to you. For each item on their list, ask: "what CSS property will this use?" If they can't answer, help them figure it out — use the translation table from class-2.
+
+If you already wrote a media query in class-2, show it working. If not, you'll write your first one today.
+
 ## Objectives
 
 - Write media queries using `min-width` (mobile-first)
@@ -188,6 +194,18 @@ Then continue with the other items on your checklist. Place all media queries **
 ```
 
 This is a one-liner that makes your site more accessible for users with vestibular disorders.
+
+---
+
+## End of Class Checkpoint
+
+Before you leave, show your neighbor one working media query in your SFPOPOS project — resized in browser dev tools to prove it fires at the right breakpoint. If you can't show one working, stay and get help before next class.
+
+By end of class you should have at minimum:
+- Spaces grid responsive (1 col mobile → 3 col desktop)
+- At least one other checklist item implemented
+
+The rest of the checklist continues in class 4.
 
 ---
 
