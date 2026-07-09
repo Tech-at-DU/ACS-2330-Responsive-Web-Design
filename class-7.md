@@ -211,9 +211,35 @@ Using the WebAIM Contrast Checker, check every text/background color combination
 
 Document which pass and which fail. Fix the failures by adjusting color values until the ratio meets 4.5:1 for normal text.
 
-**Part 4: Re-run Lighthouse**
+**Part 4: Tab order audit**
 
-After making ARIA and contrast fixes, re-run your Lighthouse accessibility audit. Your score should have increased from class-6.
+Keyboard-only users navigate with Tab. If tab order is wrong, they hit buttons in the wrong sequence or can't reach important content at all.
+
+In your SFPOPOS project, close your mouse and navigate the entire site with only the Tab key and Enter. Document what you find:
+
+- Can you reach the hamburger button?
+- After opening the menu, does focus move into the nav links?
+- After closing the menu, does focus return to the button?
+- Can you reach every card on the list page?
+- Does the tab order match the visual order?
+
+Look for elements with unexpected `tabindex` values. Positive `tabindex` values (`tabindex="1"`, `tabindex="2"`) override natural document order and usually cause problems:
+
+```html
+<!-- Bad — breaks natural tab order -->
+<button tabindex="2">Second</button>
+<button tabindex="1">First</button>
+
+<!-- Good — follow document order -->
+<button>First</button>
+<button>Second</button>
+```
+
+Use `tabindex="0"` to make a non-interactive element focusable. Use `tabindex="-1"` to remove an element from tab order (useful for closed menus). Fix any tab order issues you find.
+
+**Part 5: Re-run Lighthouse**
+
+After making ARIA, contrast, and tab order fixes, re-run your Lighthouse accessibility audit. Your score should have increased from class-6.
 
 ---
 
