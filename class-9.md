@@ -208,6 +208,17 @@ Test at 375px (mobile) and 1024px (desktop) after each step.
 
 ---
 
+## End of Class Checkpoint
+
+Before you leave, confirm Tailwind is working in your SFPOPOS project:
+- Add `text-red-500` to any element — it should turn red
+- Your spaces grid should show 1 column at 375px (mobile) and 3 columns at 1024px (desktop)
+- Header nav should use Tailwind flex classes, not the old CSS
+
+**This is your Assignment 3 submission.** Fork your SFPOPOS repo and submit the link to Gradescope. Your site should be responsive using Tailwind — the vanilla CSS you wrote in classes 3–5 should be replaced with Tailwind responsive prefixes.
+
+---
+
 ## Assess your work
 
 | Category | Does not meet | Meets | Exceeds |
