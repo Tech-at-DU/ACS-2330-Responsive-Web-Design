@@ -24,6 +24,47 @@ If your wireframes aren't finished, finish them now — you need them for the UX
 
 ---
 
+## Part 1: Project 2 Content Outline and Implementation Checklist (40 mins)
+
+Before you test your wireframes, make sure they're complete enough to test. This activity ensures every student leaves class with a documented plan they can implement.
+
+### Step 1: Content Outline (15 mins)
+
+List every element on every page. This is your complete inventory — nothing should silently disappear between mobile and desktop.
+
+```
+- Project Name
+  - Home
+    - Header
+      - Logo / site title
+      - Nav links (list them)
+      - [mobile: hamburger menu]
+    - Hero section
+      - Heading
+      - Subheading
+      - CTA button
+    - Content section
+      - ...
+  - Detail / About / [other pages]
+    - ...
+```
+
+Use the exact structure of your site. Name elements the way you'd name CSS classes.
+
+### Step 2: Implementation Checklist (25 mins)
+
+Go through your wireframe annotations and translate each one to a CSS/Tailwind approach. You're building your work order for classes 11–12.
+
+| Page | Wireframe annotation | Tailwind approach | Status |
+|------|---------------------|-------------------|--------|
+| Home | `1 col → 3 col` (card grid) | `grid-cols-1 md:grid-cols-3` | ☐ |
+| Home | `hamburger → full nav` | `hidden md:flex` + state toggle | ☐ |
+| Detail | `stacked → side by side` (image + text) | `flex-col md:flex-row` | ☐ |
+
+Every annotation in your wireframe should appear in this table. If you can't fill in the "Tailwind approach" column, ask for help now.
+
+---
+
 ## Why Test Wireframes?
 
 You are not a typical user of your own site. You know where everything is, what every button does, and how the navigation works. You've been staring at it for hours.
