@@ -157,10 +157,11 @@ In practice you'll use both. Grid handles macro layout; Flexbox handles micro la
 **Part 2:** Convert the SFPOPOS detail page layout to use `grid-template-areas`. Your wireframe annotations for that page describe the mobile and desktop arrangements — implement them.
 
 **Part 3:** Solve the responsive grid challenges:
-- https://github.com/Tech-at-DU/Grid-responsive-Challenge
-- https://github.com/Tech-at-DU/responsive-web-design-challenge
 
-Submit the second challenge to Gradescope separately.
+- **In-class:** https://github.com/Tech-at-DU/Grid-responsive-Challenge — work through this during class
+- **Gradescope (A2):** https://github.com/Tech-at-DU/responsive-web-design-challenge — this is your Assignment 2 submission
+
+Fork the `responsive-web-design-challenge` repo, complete it, and submit the link to Gradescope before next class. This is a separate graded submission from the SFPOPOS work.
 
 **Stretch challenge:** Add a sidebar layout to the SFPOPOS About page using `grid-template-areas`:
 
