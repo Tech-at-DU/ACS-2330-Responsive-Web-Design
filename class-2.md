@@ -72,6 +72,37 @@ Digital wireframes are easier to share, annotate, and reference while coding. Th
 
 ---
 
+## Part 4: Write Your First Media Query (30 mins)
+
+Don't leave class without proving the translation works. Pick one item from your implementation checklist — ideally the spaces grid column change since every SFPOPOS project has it — and implement it now.
+
+Open your SFPOPOS project and write this:
+
+```css
+/* Default — mobile, single column */
+.POPOSList-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* Desktop — three columns */
+@media (min-width: 1024px) {
+  .POPOSList-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+```
+
+Adjust the class name to match yours. Check it in browser dev tools: resize to 375px — one column. Resize to 1200px — three columns.
+
+**If your grid already uses `grid-template-columns`, you already have the first half.** Just add the media query below it.
+
+This is the loop: wireframe annotation → implementation checklist item → working CSS. You'll repeat this loop for every annotation over the next four classes.
+
+Mark the item done on your checklist. You have at least one item finished before class 3.
+
+---
+
 ## Homework
 
 Finalize your wireframes and implementation checklist.
