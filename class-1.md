@@ -2,7 +2,7 @@
 
 ## Warmup (10 mins)
 
-Find your SFPOPOS project and start it. Open it in two places:
+Find your SFPOPOS project and start it. View it in two places:
 
 1. **Desktop browser** — view it normally at full width
 2. **Your phone** — open the local URL on your phone (same wifi network required)
