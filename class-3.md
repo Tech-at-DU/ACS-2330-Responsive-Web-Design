@@ -151,6 +151,64 @@ The `hover` feature is particularly useful: `@media (hover: hover)` lets you saf
 
 ---
 
+## Where Do Media Queries Go in a React Project?
+
+In a component-based project using CSS Modules, media queries belong in the **same `.module.css` file as the component's default styles**, at the bottom of the file — after all the default rules.
+
+```css
+/* POPOSList.module.css */
+
+/* ── Default styles (mobile) ─────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+/* ── Media queries (below all defaults) ──────────── */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+```
+
+This layout makes the mobile-first pattern readable at a glance: default styles on top, breakpoints stacked in ascending order below. A developer reading this file can see the full responsive behavior of the component without jumping between files.
+
+**Don't put component media queries in `index.css`.** That file is for global styles — body, root, font imports, CSS resets. Each component is responsible for its own responsive behavior.
+
+**Applying CSS Module class names in JSX:**
+
+```jsx
+import styles from './POPOSList.module.css'
+
+function POPOSList() {
+  return (
+    <div className={styles.grid}>
+      {spaces.map(space => (
+        <div className={styles.card} key={space.id}>...</div>
+      ))}
+    </div>
+  )
+}
+```
+
+The media queries in the `.module.css` file apply automatically — no extra setup in JSX.
+
+---
+
 ## Challenge
 
 Open your SFPOPOS project and your implementation checklist from class-2. Work through the checklist and implement each responsive change using media queries.

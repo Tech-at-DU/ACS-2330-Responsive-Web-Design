@@ -2,10 +2,18 @@
 
 ## Warmup (10 mins)
 
-Find your SFPOPOS project and start it. View it in two places:
+Find your SFPOPOS project and start the dev server with the `--host` flag:
 
-1. **Desktop browser** — view it normally at full width
-2. **Your phone** — open the local URL on your phone (same wifi network required)
+```bash
+npm run dev -- --host
+```
+
+The `--host` flag tells Vite to listen on your local network, not just `localhost`. Without it, your phone can't reach the server even on the same wifi. Vite will print two URLs — use the **Network** one (something like `http://192.168.1.x:5173`) on your phone.
+
+Open the site in two places:
+
+1. **Desktop browser** — use the `localhost` URL, view at full width
+2. **Your phone** — use the **Network** URL, same wifi network required
 
 Compare the two. Make a list of specific problems you find on mobile: what breaks, what's too small to tap, what's hard to read, what's cut off. You'll be solving these over the next several weeks.
 

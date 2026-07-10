@@ -27,6 +27,57 @@ Fix any gaps before Part 2.
 
 ---
 
+## CSS Modules in Vite
+
+Before writing CSS, you need to know where it goes. SFPOPOS was built with Vite and React. Most Vite/React projects use **CSS Modules** — each component has its own scoped CSS file, and class names don't leak between components.
+
+**File structure:**
+
+```
+src/
+  components/
+    Title/
+      Title.jsx
+      Title.module.css       ← styles for Title only
+    POPOSList/
+      POPOSList.jsx
+      POPOSList.module.css   ← styles for POPOSList only
+```
+
+**How to use them — import the CSS file as a JavaScript object:**
+
+```jsx
+import styles from './POPOSList.module.css'
+
+function POPOSList() {
+  return <div className={styles.grid}>...</div>
+}
+```
+
+**The hyphen naming rule:**
+
+CSS class names with hyphens are not valid JavaScript identifiers, so they require bracket notation in JSX:
+
+```css
+/* POPOSList.module.css */
+.grid { ... }            /* dot notation works:   styles.grid */
+.POPOSList-grid { ... }  /* requires brackets:    styles['POPOSList-grid'] */
+```
+
+To avoid bracket notation entirely, use camelCase in your CSS Modules:
+
+```css
+/* Prefer camelCase — no brackets needed in JSX */
+.poposList { ... }       /* → styles.poposList */
+.popOSListGrid { ... }   /* → styles.popOSListGrid */
+```
+
+If SFPOPOS already uses hyphenated class names, you have two options: rename them to camelCase (requires updating JSX too), or use bracket notation consistently. Pick one and be consistent.
+
+**Not using CSS Modules?** If your project uses plain `.css` files (no `.module.css`), class names are applied as plain strings: `className="POPOSList-grid"`. The CSS patterns in this course are the same either way — only the import syntax differs.
+
+---
+
 ## Part 2: Wireframe to CSS (30 mins)
 
 Every annotation in your wireframe maps to a CSS strategy. Here's the translation:
