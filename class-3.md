@@ -92,14 +92,14 @@ For most projects, **two or three breakpoints** cover the range well. Start with
   grid-template-columns: 1fr;
 }
 
-/* Tablet and up */
+/* Tablet and up two columns */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Desktop and up */
+/* Desktop and up three columns */
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: 1fr 1fr 1fr;
@@ -108,6 +108,8 @@ For most projects, **two or three breakpoints** cover the range well. Start with
 ```
 
 Notice the order: mobile default first, then media queries in ascending order. Each query builds on the previous.
+
+Best practice! Place rules using media queries after the rule they modify. This is better, becuase it is easy to spot where media queries are applied. 
 
 ---
 
