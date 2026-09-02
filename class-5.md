@@ -88,6 +88,7 @@ Example: SFPOPOS detail page with header, image, info, and footer.
 /* Mobile: everything stacks */
 .POPOSDetails {
   display: grid;
+  grid-template-columns: 1fr; /* 1 column on mobile */
   grid-template-areas:
     "header"
     "image"
