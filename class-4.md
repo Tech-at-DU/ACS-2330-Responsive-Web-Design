@@ -13,6 +13,10 @@ You already know Flexbox. This class focuses on how to use it specifically for r
 
 ---
 
+## Warm Up
+
+How's your flex box knowledge? I think you need a review! Quick, play this game: https://flexboxfroggy.com
+
 ## Responsive Units
 
 ### `%`
