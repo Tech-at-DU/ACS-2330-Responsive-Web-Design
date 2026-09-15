@@ -13,7 +13,7 @@ Semantic HTML gets you most of the way to an accessible site. ARIA fills the gap
 
 ## What is ARIA?
 
-ARIA (Accessible Rich Internet Applications) is a set of HTML attributes that add semantic meaning screen readers can't get from HTML structure alone.
+ARIA (Accessible Rich Internet Applications) is a set of **HTML attributes** that add semantic meaning screen readers can't get from HTML structure alone.
 
 **The first rule of ARIA:** don't use it if a native HTML element does the job. A `<button>` is already announced as a button. A `<nav>` is already announced as navigation. ARIA is for filling gaps, not replacing semantic HTML.
 
