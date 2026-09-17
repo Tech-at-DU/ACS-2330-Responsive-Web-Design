@@ -2,7 +2,7 @@
 
 ## Warmup (10 mins)
 
-Find your SFPOPOS project and start the dev server with the `--host` flag:
+Find your SFPOPOS project (from ACS 1320) and start the dev server with the `--host` flag:
 
 ```bash
 npm run dev -- --host

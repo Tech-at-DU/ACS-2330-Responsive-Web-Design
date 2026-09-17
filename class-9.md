@@ -219,7 +219,26 @@ Before you leave, confirm Tailwind is working in your SFPOPOS project:
 
 ---
 
+## Assignment 3: Final Rubric (Whole Site)
+
+You saw this in class-8. It covers everything built across classes 3–9, not just today's Tailwind work — use it as your final check before submitting to Gradescope.
+
+| Category | Does not meet | Meets | Exceeds |
+|----------|--------------|-------|---------|
+| Mobile-first layout | `max-width` queries or no media queries; layout breaks at some sizes | `min-width` media queries throughout, layout correct at all breakpoints | Breakpoints chosen from content needs, not just device presets |
+| Flexbox & Grid | Layouts don't adapt, or still hardcoded to one screen size | Stack-to-row, `order`, sticky footer, and `auto-fill`/`minmax` grid all working | `grid-template-areas` used for the detail page, matches wireframe at every breakpoint |
+| Images | Images overflow, distort, or aren't responsive | All images fluid (`width: 100%; height: auto`) | `object-fit` used where a fixed-height container needs it |
+| Semantic HTML & alt text | Mostly `div`/`span`, missing or generic alt text | Correct semantic elements throughout, all images have meaningful alt text | Structure reads as a sensible outline; alt text is specific and useful |
+| Hamburger menu & ARIA | Menu doesn't open/close, missing ARIA, or nav broken at some size | Menu works on mobile and desktop, `aria-label`/`aria-expanded`/`aria-hidden` present and correct, closes on link click | Smooth open/close transition, closes on outside click, visible keyboard focus style, 44×44px+ touch target |
+| Contrast & keyboard access | Contrast failures present, or elements unreachable by keyboard | All text passes 4.5:1, full site keyboard-navigable with visible focus | All text and UI components pass WCAG AA, tab order matches visual order |
+| Lighthouse accessibility score | Below 70 | 70–89 | 90+ |
+| Tailwind conversion | Vanilla CSS still driving layout, or Tailwind not applied consistently | Grid, Flexbox, and hide/show all rebuilt with Tailwind responsive prefixes, matching prior behavior | Vanilla CSS files removed where fully replaced; `container`/`mx-auto`/`gap` used idiomatically |
+
+---
+
 ## Assess your work
+
+The table below is the same-day checkpoint for today's Tailwind work specifically — see the Final Rubric above for how the whole site gets graded.
 
 | Category | Does not meet | Meets | Exceeds |
 |----------|--------------|-------|---------|
