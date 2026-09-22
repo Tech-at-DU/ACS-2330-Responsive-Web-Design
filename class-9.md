@@ -13,6 +13,23 @@ This is intentional. Understanding what `md:flex-row` means requires knowing wha
 
 ---
 
+## Before You Start: Lock In Your Vanilla CSS Version
+
+You should have a finished vanilla CSS version of SFPOPOS from classes 3–8 — media queries, Flexbox, Grid, accessibility, and the hamburger menu all working. Before touching Tailwind, commit and push any last changes, then submit a link to that commit to Gradescope.
+
+**How to get the commit link:**
+1. `git add .` / `git commit -m "Finish vanilla CSS version"` / `git push`
+2. On GitHub, open that commit and copy its URL (it looks like `github.com/you/sfpopos/commit/<hash>`)
+3. Submit that link to Gradescope — this is your checkpoint for the CSS/accessibility/hamburger work graded by the Final Rubric in class-8
+
+**Keep working in the same repo.** Don't fork or start a new project for Tailwind — you're converting this codebase in place, on top of that commit. The commit link is just a marker so your pre-Tailwind work is graded separately from what you build today.
+
+**Why a commit link, not a new repo:** every commit has a unique hash — a permanent, unchangeable pointer to exactly what your code looked like at that moment. Linking to that commit (rather than just "the repo" or "the main branch") means the grader sees the exact state you're claiming credit for, even after you've pushed 50 more commits converting things to Tailwind. The repo keeps moving; the commit link doesn't.
+
+This is standard practice on real engineering teams: tagging a release (`v1.2.0`), linking a specific commit in a status update, or pointing a code reviewer at the commit before a risky refactor so they can diff against it later. A pull request works the same way — it's a link to a fixed set of commits, not a vague pointer at "the branch." Get comfortable grabbing a commit URL now; you'll do it constantly once you're working on a team.
+
+---
+
 ## Setup
 
 Install Tailwind in your React/Vite project:
@@ -215,7 +232,7 @@ Before you leave, confirm Tailwind is working in your SFPOPOS project:
 - Your spaces grid should show 1 column at 375px (mobile) and 3 columns at 1024px (desktop)
 - Header nav should use Tailwind flex classes, not the old CSS
 
-**This is your Assignment 3 submission.** Fork your SFPOPOS repo and submit the link to Gradescope. Your site should be responsive using Tailwind — the vanilla CSS you wrote in classes 3–5 should be replaced with Tailwind responsive prefixes.
+**This is your Assignment 3 submission.** Push your final commit and submit that commit's link to Gradescope — same repo as the vanilla CSS commit you submitted at the start of class, just further along. Your site should be responsive using Tailwind — the vanilla CSS you wrote in classes 3–5 should be replaced with Tailwind responsive prefixes.
 
 ---
 
