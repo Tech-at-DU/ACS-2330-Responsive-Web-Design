@@ -7,14 +7,38 @@ Forms are one of the hardest UI elements to get right on mobile. Small touch tar
 - Use correct input types to trigger appropriate mobile keyboards
 - Size inputs and controls for touch interaction
 - Structure labels for responsive layouts
+- Group related radios/checkboxes with `<fieldset>` and `<legend>`
 - Write error states with ARIA
 - Style forms with Tailwind CSS
+- Build a required new-page form (Submit a Space) into the SFPOPOS project
+
+---
+
+## Warmup: Diagnose a Broken Form (10 mins)
+
+Before the lecture, break this down yourselves. Pair up.
+
+```html
+<form>
+  <input type="text" placeholder="First Name">
+  <input type="text" placeholder="Email">
+  <input type="text" placeholder="Phone">
+  <input type="checkbox"> I agree to the terms
+  <button>Submit</button>
+</form>
+```
+
+**Part 1 (5 mins):** With your partner, list every mobile problem you can find in this form. Don't fix it — just diagnose. Write down what would go wrong and why.
+
+**Part 2 (5 mins):** Pull this form up on your own phone (or paste it into a codepen and open that on your phone). Tap into the email field. Try to see the submit button while the keyboard is up. Tap the checkbox with your thumb. Note what actually breaks versus what you predicted.
+
+This is the same idea as the VoiceOver exercise from class-6 — feeling a failure sticks better than reading about it. You'll compare your list against the section below.
 
 ---
 
 ## Why Forms Fail on Mobile
 
-Four common failures:
+Check your warmup list against these four. Did you find all of them?
 
 1. **Touch targets too small** — default input height is often ~34px. Minimum for reliable tapping is 44px.
 2. **Wrong keyboard** — `type="text"` on an email field shows a standard keyboard, not the email keyboard with `@`. The user has to hunt for it.
@@ -282,43 +306,128 @@ Key Tailwind patterns in this form:
 
 ---
 
-## Challenge
+## Challenge: Submit a Public Space
 
-If your Project 2 includes a form, build it now following the patterns above. If it doesn't, build a contact form as a standalone exercise.
+**This is required — not optional, and not a generic contact form.** Add a new page to your SFPOPOS React project where a user can submit a new public space for the site. This is the same repo you've been building since class-1 — add a route/component for it (`/submit`, `SubmitSpace.jsx`, whatever fits your project's structure).
 
-Your form must:
-- [ ] Use correct `type` attributes for every input
-- [ ] Include `autocomplete` on all fields
-- [ ] Have visible `<label>` elements above every input (not placeholder-only)
-- [ ] Have inputs at least 44px tall
-- [ ] Stack fields single-column on mobile, allow multi-column on desktop where appropriate
+A contact form only exercises text and email inputs — too easy to skip the hard parts of this lesson. A "submit a space" form forces grouped checkboxes, exclusive radio choices, and numeric fields with real validation ranges, on top of everything a contact form would cover.
+
+### Required fields
+
+| Field | Input pattern | Why it's here |
+|-------|---------------|----------------|
+| Space name | `type="text"`, required | Baseline text input — label, autocomplete, error state |
+| Address | `type="text"`, `autocomplete="street-address"`, required | Real autocomplete value, not just `name`/`email` |
+| Description | `<textarea>`, required | Multi-line input, different sizing rules than a single-line field |
+| Indoor / Outdoor / Both | Radio group, required | Mutually exclusive choice — grouped with `<fieldset>` + `<legend>`, not covered elsewhere in this class |
+| Amenities (seating, public art, restrooms, coffee/food nearby, power outlets, wifi) | Checkbox group, at least one selectable | Multiple related checkboxes grouped under one accessible label |
+| Latitude | `type="number"`, `min="-90"`, `max="90"`, `step="any"`, required | Numeric keyboard + range validation, not just "is this a number" |
+| Longitude | `type="number"`, `min="-180"`, `max="180"`, `step="any"`, required | Same, second axis |
+| Submit button | full width on mobile | Ties back to the Tailwind pattern above |
+
+Feel free to add more fields (hours, photo, contact email for the submitter) if you want to push further — the list above is the floor, not the ceiling.
+
+### The `<fieldset>` / `<legend>` pattern
+
+A group of checkboxes or radios needs one label for the whole group, not just labels on each option. `<fieldset>` and `<legend>` do that — screen readers announce the group name before reading each option.
+
+```html
+<fieldset>
+  <legend>Space type</legend>
+  <label><input type="radio" name="spaceType" value="indoor" required> Indoor</label>
+  <label><input type="radio" name="spaceType" value="outdoor" required> Outdoor</label>
+  <label><input type="radio" name="spaceType" value="both" required> Both</label>
+</fieldset>
+
+<fieldset>
+  <legend>Amenities</legend>
+  <label><input type="checkbox" name="amenities" value="seating"> Seating</label>
+  <label><input type="checkbox" name="amenities" value="art"> Public art</label>
+  <label><input type="checkbox" name="amenities" value="restrooms"> Restrooms</label>
+  <label><input type="checkbox" name="amenities" value="coffee"> Coffee/food nearby</label>
+  <label><input type="checkbox" name="amenities" value="power"> Power outlets</label>
+  <label><input type="checkbox" name="amenities" value="wifi"> Wifi</label>
+</fieldset>
+```
+
+```css
+fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 4px;
+}
+```
+
+Style the same fieldset with Tailwind: `class="border border-gray-300 rounded-lg p-4"` on the fieldset, `class="font-semibold px-1"` on the legend.
+
+### Requirements checklist
+
+- [ ] New page/route exists for submitting a space, reachable in your app
+- [ ] Every field from the table above is present
+- [ ] Correct `type` on every input — text, textarea, radio, checkbox, number
+- [ ] `autocomplete` set where it makes sense (address, not lat/long)
+- [ ] Indoor/Outdoor/Both and Amenities are each wrapped in `<fieldset>` + `<legend>`
+- [ ] Visible `<label>` on every field, including each radio/checkbox option (not placeholder-only)
+- [ ] Every input, radio, checkbox, and the submit button is at least 44px tall/wide
+- [ ] Latitude/longitude use `type="number"` with `min`/`max` matching real coordinate ranges
+- [ ] Fields stack single-column on mobile; name/lat-long or similar pairs can sit side by side on desktop
 - [ ] Submit button is full width on mobile
-- [ ] Include at least one error state with `aria-invalid` and `aria-describedby`
-- [ ] Pass Lighthouse accessibility audit on the form page
+- [ ] At least one required field shows a real error (`aria-invalid` + `aria-describedby`) when submitted empty
+- [ ] Styled with Tailwind, matching the rest of your site
+- [ ] Passes a Lighthouse accessibility audit on this page
 
-**Stretch challenge:** Add client-side validation in React. When a field fails validation, set `aria-invalid="true"` and show the error message. Clear the error when the user corrects the input.
+**Stretch challenge:** wire up validation on the required fields in React — block submission and show errors until every required field is valid:
 
 ```jsx
-const [emailError, setEmailError] = useState('')
+const [nameError, setNameError] = useState('')
 
-function validateEmail(value) {
-  if (!value.includes('@')) {
-    setEmailError('Enter a valid email address.')
-  } else {
-    setEmailError('')
-  }
+function validateName(value) {
+  setNameError(value.trim() ? '' : 'Space name is required.')
 }
 
 <input
-  type="email"
-  aria-invalid={emailError ? 'true' : 'false'}
-  aria-describedby={emailError ? 'email-error' : undefined}
-  onBlur={(e) => validateEmail(e.target.value)}
+  type="text"
+  aria-invalid={nameError ? 'true' : 'false'}
+  aria-describedby={nameError ? 'name-error' : undefined}
+  onBlur={(e) => validateName(e.target.value)}
 />
-{emailError && (
-  <span id="email-error" className="text-red-600 text-sm">{emailError}</span>
+{nameError && (
+  <span id="name-error" className="text-red-600 text-sm">{nameError}</span>
 )}
 ```
+
+**Further stretch:** add a "Use my location" button that fills latitude/longitude automatically with the Geolocation API:
+
+```jsx
+function useMyLocation() {
+  navigator.geolocation.getCurrentPosition((pos) => {
+    setLat(pos.coords.latitude)
+    setLng(pos.coords.longitude)
+  })
+}
+```
+
+---
+
+## Peer Review (10 mins)
+
+Before you self-assess, trade with a partner.
+
+1. Open your partner's form on your phone, or resize your browser to 375px.
+2. Try to complete and submit it — mobile keyboard only, no mouse.
+3. Check their form against this list:
+   - [ ] Right keyboard type appears for each field (number pad for lat/long, standard for text)
+   - [ ] Labels stay visible when the virtual keyboard is open
+   - [ ] Every input, checkbox, and button is comfortably tappable
+   - [ ] Entering something invalid produces a clear, visible error
+4. Give your partner one specific thing that worked and one specific thing to fix. "The phone field brought up the number pad" beats "looks good."
+
+Fix whatever your partner flags before moving on.
 
 ---
 
@@ -326,8 +435,10 @@ function validateEmail(value) {
 
 | Category | Does not meet | Meets | Exceeds |
 |----------|--------------|-------|---------|
-| Input types | Default `type="text"` on all inputs | Correct type on every input (email, tel, etc.) | `autocomplete` added to all fields |
-| Touch sizing | Inputs shorter than 44px | All inputs and buttons ≥ 44px tall | Checkboxes/radios wrapped in labels for full-width tap target |
-| Labels | Placeholder-only or labels missing | Visible label above every input | Labels on desktop adapt to side-by-side layout where space allows |
-| Error states | No error handling | Error message present, not color-only | `aria-invalid` and `aria-describedby` wired correctly |
-| Tailwind | Minimal or no Tailwind styling | Form styled with Tailwind, mobile layout works | Responsive layout (stacked mobile, multi-column desktop on name fields) |
+| Required fields | Missing one or more fields from the required table (name, address, description, space type, amenities, lat, long) | All required fields present and functional | Extra fields added beyond the floor (hours, photo, contact email) |
+| Input types | Default `type="text"` on most inputs | Correct type on every input, including `number` for lat/long with `min`/`max` | `autocomplete` added everywhere it applies |
+| Grouped inputs | Radios/checkboxes have no group label, or `<fieldset>`/`<legend>` missing | Space type and amenities each wrapped in `<fieldset>` + `<legend>` | Group labels are specific enough to be understood out of context by a screen reader |
+| Touch sizing | Inputs, radios, or checkboxes shorter than 44px, or hard to tap | All inputs, radios, checkboxes, and the button ≥ 44px tall/wide | Checkbox/radio label text is part of the tap target, not just the input |
+| Labels | Placeholder-only or labels missing | Visible label above every field, including each radio/checkbox option | Labels on desktop adapt to side-by-side layout where space allows |
+| Error states | No error handling | At least one required field shows a real error on empty submit, not color-only | `aria-invalid`/`aria-describedby` wired on every required field, errors clear on correction |
+| Tailwind & layout | Minimal or no Tailwind styling | Form styled with Tailwind, stacks correctly on mobile | Multi-column layout on desktop where it makes sense (e.g. lat/long side by side) |
