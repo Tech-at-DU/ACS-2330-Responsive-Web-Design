@@ -323,9 +323,11 @@ A contact form only exercises text and email inputs — too easy to skip the har
 | Amenities (seating, public art, restrooms, coffee/food nearby, power outlets, wifi) | Checkbox group, at least one selectable | Multiple related checkboxes grouped under one accessible label |
 | Latitude | `type="number"`, `min="-90"`, `max="90"`, `step="any"`, required | Numeric keyboard + range validation, not just "is this a number" |
 | Longitude | `type="number"`, `min="-180"`, `max="180"`, `step="any"`, required | Same, second axis |
+| Main photo | `type="file"`, `accept="image/*"`, required | Single required file — the field type not covered anywhere else in this course |
+| Additional photos | `type="file"`, `accept="image/*"`, `multiple`, optional | Same input type, but optional and multi-file — different validation rule on the identical element |
 | Submit button | full width on mobile | Ties back to the Tailwind pattern above |
 
-Feel free to add more fields (hours, photo, contact email for the submitter) if you want to push further — the list above is the floor, not the ceiling.
+Feel free to add more fields (hours, contact email for the submitter) if you want to push further — the list above is the floor, not the ceiling.
 
 ### The `<fieldset>` / `<legend>` pattern
 
@@ -365,16 +367,84 @@ legend {
 
 Style the same fieldset with Tailwind: `class="border border-gray-300 rounded-lg p-4"` on the fieldset, `class="font-semibold px-1"` on the legend.
 
+### Photo Upload
+
+`type="file"` is a new input type for this course — it opens the device's camera/photo picker on mobile and a file browser on desktop. You need two of them, and they differ by exactly one attribute and one validation rule.
+
+```html
+<div class="field">
+  <label for="main-photo">Photo of the space (required)</label>
+  <input
+    type="file"
+    id="main-photo"
+    name="mainPhoto"
+    accept="image/*"
+    required
+  >
+</div>
+
+<div class="field">
+  <label for="extra-photos">Additional photos (optional)</label>
+  <input
+    type="file"
+    id="extra-photos"
+    name="extraPhotos"
+    accept="image/*"
+    multiple
+  >
+</div>
+```
+
+- `accept="image/*"` restricts the picker to images and, on most mobile browsers, offers the camera directly — no code needed to "take a photo," the OS handles it.
+- `multiple` is the only difference between the two inputs — it lets the second field accept more than one file. Don't add it to the required main-photo field; that one is exactly one image.
+- `required` still works on `type="file"` — the browser blocks submission until a file is chosen, same as any other required field.
+
+**Native file inputs are ugly and hard to size.** Tailwind's `file:` variant targets the button part of the input directly, so you don't have to fight it with generic CSS:
+
+```html
+<input
+  type="file"
+  accept="image/*"
+  required
+  class="block w-full text-sm text-gray-700
+         file:mr-4 file:py-3 file:px-4
+         file:rounded file:border-0
+         file:bg-blue-600 file:text-white
+         file:font-medium
+         hover:file:bg-blue-700"
+>
+```
+
+`file:py-3 file:px-4` is what gets the clickable button part to a real touch target — the plain text next to it ("No file chosen") isn't tappable and doesn't need to be.
+
+**Showing what got selected** (a file input's default text isn't very useful — most people can't read "No file chosen" and know what to do):
+
+```jsx
+const [mainPhotoName, setMainPhotoName] = useState('')
+
+<input
+  type="file"
+  accept="image/*"
+  required
+  onChange={(e) => setMainPhotoName(e.target.files[0]?.name ?? '')}
+/>
+{mainPhotoName && <p class="text-sm text-gray-600">Selected: {mainPhotoName}</p>}
+```
+
+For the multi-file input, `e.target.files` is a `FileList` — use `e.target.files.length` to show a count ("3 files selected") instead of trying to list every name.
+
 ### Requirements checklist
 
 - [ ] New page/route exists for submitting a space, reachable in your app
 - [ ] Every field from the table above is present
-- [ ] Correct `type` on every input — text, textarea, radio, checkbox, number
-- [ ] `autocomplete` set where it makes sense (address, not lat/long)
+- [ ] Correct `type` on every input — text, textarea, radio, checkbox, number, file
+- [ ] `autocomplete` set where it makes sense (address, not lat/long or file inputs)
 - [ ] Indoor/Outdoor/Both and Amenities are each wrapped in `<fieldset>` + `<legend>`
 - [ ] Visible `<label>` on every field, including each radio/checkbox option (not placeholder-only)
-- [ ] Every input, radio, checkbox, and the submit button is at least 44px tall/wide
+- [ ] Every input, radio, checkbox, file button, and the submit button is at least 44px tall/wide
 - [ ] Latitude/longitude use `type="number"` with `min`/`max` matching real coordinate ranges
+- [ ] Main photo input is required and accepts exactly one image; additional-photos input is optional and accepts multiple
+- [ ] Selected file name (or count, for the multi-file input) is shown to the user after picking
 - [ ] Fields stack single-column on mobile; name/lat-long or similar pairs can sit side by side on desktop
 - [ ] Submit button is full width on mobile
 - [ ] At least one required field shows a real error (`aria-invalid` + `aria-describedby`) when submitted empty
@@ -435,9 +505,10 @@ Fix whatever your partner flags before moving on.
 
 | Category | Does not meet | Meets | Exceeds |
 |----------|--------------|-------|---------|
-| Required fields | Missing one or more fields from the required table (name, address, description, space type, amenities, lat, long) | All required fields present and functional | Extra fields added beyond the floor (hours, photo, contact email) |
+| Required fields | Missing one or more fields from the required table (name, address, description, space type, amenities, lat, long, main photo, extra photos) | All required fields present and functional | Extra fields added beyond the floor (hours, contact email) |
 | Input types | Default `type="text"` on most inputs | Correct type on every input, including `number` for lat/long with `min`/`max` | `autocomplete` added everywhere it applies |
 | Grouped inputs | Radios/checkboxes have no group label, or `<fieldset>`/`<legend>` missing | Space type and amenities each wrapped in `<fieldset>` + `<legend>` | Group labels are specific enough to be understood out of context by a screen reader |
+| Photo upload | Missing, or main photo isn't required | Main photo is a required single-file input, extra photos is an optional multi-file input, both `accept="image/*"` | Selected file name/count shown to the user, file button styled to a real touch target with Tailwind's `file:` variant |
 | Touch sizing | Inputs, radios, or checkboxes shorter than 44px, or hard to tap | All inputs, radios, checkboxes, and the button ≥ 44px tall/wide | Checkbox/radio label text is part of the tap target, not just the input |
 | Labels | Placeholder-only or labels missing | Visible label above every field, including each radio/checkbox option | Labels on desktop adapt to side-by-side layout where space allows |
 | Error states | No error handling | At least one required field shows a real error on empty submit, not color-only | `aria-invalid`/`aria-describedby` wired on every required field, errors clear on correction |
