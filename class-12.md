@@ -1,4 +1,4 @@
-# Class 12: Modern Responsive CSS
+# Class 12: Fluid Typography and Modern CSS
 
 This class covers three modern CSS features that solve problems you've already encountered — stepped font sizes, fixed viewport units on mobile, and components that don't know how wide their container is. These are all browser-supported and increasingly expected on production sites.
 
@@ -9,6 +9,30 @@ This class covers three modern CSS features that solve problems you've already e
 - Use dynamic viewport units to fix mobile browser chrome issues
 - Understand container queries and when to reach for them
 - Apply any of the above to Project 2
+
+## Today's Time Plan (2:45 total)
+
+| Time | Activity |
+|------|----------|
+| 10 min | Warmup — predict and test |
+| 50 min | Concept walkthrough with live demo (clamp, min/max, dvh, container queries) |
+| 5 min | Break |
+| 90 min | Project 2 lab (structured — see Project 2 Lab below) |
+| 10 min | Exit ticket |
+
+Lecture stays short on purpose — these are "try it and see" concepts, not ones that reward long explanation. Most of tonight's time is applied work, because that's where fluid type and container queries actually sink in.
+
+---
+
+## Warmup: Predict, Then Test (10 mins)
+
+Open [`class-12-demo.html`](./class-12-demo.html) — double-click it, or drag it into a browser tab. No build step, no server needed.
+
+Before resizing anything, look at **Part 1** and predict: as the window gets wider, will the stepped heading or the fluid heading look better at in-between sizes, like 850px? Write down your guess.
+
+Now slowly resize your browser window and watch both. Were you right? What specifically did you see the stepped version do that the fluid version didn't?
+
+Keep this file open — you'll come back to Part 2 when we get to container queries.
 
 ---
 
@@ -28,7 +52,7 @@ body { font-size: 16px; }
 }
 ```
 
-This creates steps — the font jumps at each breakpoint. Between 768px and 1024px the font stays 18px regardless of how much space is available. On a 500px screen it jumps immediately to 18px even though there's not much more room than at 400px.
+This creates steps — the font jumps at each breakpoint. Between 768px and 1024px the font stays 18px regardless of how much space is available. At 768px it jumps immediately to 18px even though there's barely more room than at 767px, one pixel narrower.
 
 `clamp()` solves this with smooth, continuous scaling.
 
@@ -78,6 +102,8 @@ Tailwind doesn't have built-in `clamp()` utilities, but you can use arbitrary va
 ```
 
 Or define it in a CSS file alongside your Tailwind import and apply a custom class.
+
+**Try it:** back in `class-12-demo.html`, scroll to "Compare: Stepped vs. Fluid" and resize through 600px and 900px wide. That's the jump from the example above, side by side with the fix.
 
 ---
 
@@ -219,6 +245,8 @@ Then query the container in the child's styles:
 
 Both use the same `.card` CSS. The layout adapts to available space, not viewport size. This is the component-based approach to responsiveness — the card "just works" wherever you drop it.
 
+**Try it:** go back to `class-12-demo.html`, scroll to Part 2, and drag the dashed box's corner. Your browser window hasn't changed size at all — only the container has — and the card still responds. That's the whole point of a container query: the component doesn't care about the viewport, only its own box.
+
 ### Container queries vs media queries
 
 | | Media query | Container query |
@@ -247,9 +275,11 @@ npm install @tailwindcss/container-queries
 
 ---
 
-## Project 2 Lab
+## Project 2 Lab (90 mins)
 
-Apply what you've learned today to Project 2. Suggested targets:
+**First 5 min — pick your targets.** Don't start coding yet. Write down the specific 2–3 things from the list below you'll tackle tonight. Naming a concrete target before you start keeps lab time from dissolving into unfocused tinkering.
+
+Apply what you've learned today to Project 2:
 
 1. **Replace stepped heading sizes** with `clamp()` on your `h1` and `h2` elements
 2. **Fix any `100vh` usage** — replace with `100dvh` for correct mobile behavior
@@ -261,6 +291,20 @@ Apply what you've learned today to Project 2. Suggested targets:
    - Forms accessible and touch-friendly (if applicable)
    - Lighthouse accessibility ≥ 90
    - UX test findings applied
+
+**Checkpoint, ~45 min in.** Stop and show a partner one thing you changed. If you're stuck on something, this is the moment to flag it — not at the end of the 90 minutes when there's no time left to get help.
+
+**Remaining time:** keep building. Prioritize anything still unchecked from the Project 2 checklist above over polishing something that already works — breadth before polish, since class-13 is also lab time but class-14 is final presentations.
+
+---
+
+## Exit Ticket (10 mins)
+
+Before you leave, answer in a couple sentences:
+1. What's one thing you applied tonight — `clamp()`, `dvh`, or a container query — and where in your project?
+2. What's still blocking you on Project 2 that you'll need help with in class-13?
+
+This isn't graded on correctness — it's so tonight's work doesn't just evaporate, and so class-13's lab time can start by addressing what's actually blocking people instead of guessing.
 
 ---
 

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class 12 Demo: Fluid Type + Container Queries</title>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background: #f8fafc;
+    color: #111827;
+  }
+
+  .width-readout {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #111827;
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-family: monospace;
+    z-index: 10;
+  }
+
+  section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+  }
+
+  h1.page-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p.lede {
+    color: #4b5563;
+    margin-top: 0;
+  }
+
+  /* ── Part 1: Fluid Typography ─────────────────────── */
+  .fluid-demo h1 { font-size: clamp(1.75rem, 1rem + 3vw, 3.5rem); margin: 0.5rem 0; }
+  .fluid-demo h2 { font-size: clamp(1.5rem,  1rem + 2vw, 2.5rem); margin: 0.5rem 0; }
+  .fluid-demo p  { font-size: clamp(1rem,    0.9rem + 0.5vw, 1.25rem); }
+
+  .stepped-demo h1 { font-size: 1.75rem; margin: 0.5rem 0; }
+  @media (min-width: 600px) { .stepped-demo h1 { font-size: 2.5rem; } }
+  @media (min-width: 900px) { .stepped-demo h1 { font-size: 3.5rem; } }
+
+  .compare {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) {
+    .compare { grid-template-columns: 1fr 1fr; }
+  }
+  .compare > div {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fff;
+  }
+  .compare h3 {
+    margin-top: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+  }
+
+  /* ── Part 2: Container Queries ────────────────────── */
+  .resizer {
+    resize: horizontal;
+    overflow: auto;
+    border: 2px dashed #3b82f6;
+    padding: 1rem;
+    min-width: 180px;
+    max-width: 100%;
+    width: 260px;
+    container-type: inline-size;
+    background: #fff;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .card .thumb {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #93c5fd, #3b82f6);
+    flex-shrink: 0;
+  }
+  .card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  @container (min-width: 400px) {
+    .card { flex-direction: row; }
+    .card .thumb { width: 140px; }
+  }
+
+  .drag-hint {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="width-readout" id="widthReadout">window: 0px</div>
+
+<section class="fluid-demo">
+  <h1 class="page-title">Part 1 — Fluid Typography (<code>clamp()</code>)</h1>
+  <p class="lede">Resize your browser window slowly. Watch these headings scale smoothly — no jump at any point.</p>
+  <h1>Fluid Heading (h1)</h1>
+  <h2>Fluid Subheading (h2)</h2>
+  <p>This paragraph uses <code>clamp(1rem, 0.9rem + 0.5vw, 1.25rem)</code> — it grows slightly as the window widens, but never goes below 1rem or above 1.25rem.</p>
+</section>
+
+<section>
+  <h1 class="page-title">Compare: Stepped vs. Fluid</h1>
+  <p class="lede">Same heading, two strategies. Resize slowly through 600px and 900px wide — the left column jumps at each breakpoint, the right column glides continuously.</p>
+  <div class="compare">
+    <div class="stepped-demo">
+      <h3>Stepped (media queries)</h3>
+      <h1>Stepped Heading</h1>
+    </div>
+    <div class="fluid-demo">
+      <h3>Fluid (clamp())</h3>
+      <h1>Fluid Heading</h1>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h1 class="page-title">Part 2 — Container Queries</h1>
+  <p class="lede">The dashed box below has <code>container-type: inline-size</code>. Drag its bottom-right corner to resize <strong>just the box</strong> — the card inside switches from stacked to side-by-side at 400px of <strong>container</strong> width, no matter how wide your browser window is.</p>
+  <div class="resizer">
+    <div class="card">
+      <div class="thumb"></div>
+      <div class="card-body">
+        <strong>Example POPOS Card</strong>
+        <span>Stacked below 400px container width, side-by-side above it.</span>
+      </div>
+    </div>
+  </div>
+  <p class="drag-hint">↳ Drag the dashed box's bottom-right corner to resize it.</p>
+</section>
+
+<script>
+  const readout = document.getElementById('widthReadout');
+  function update() {
+    readout.textContent = 'window: ' + window.innerWidth + 'px';
+  }
+  window.addEventListener('resize', update);
+  update();
+</script>
+
+</body>
+</html>
