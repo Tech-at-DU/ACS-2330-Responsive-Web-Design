@@ -1,34 +1,111 @@
-# Responsive Project 2
+# Project 2: Responsive Website
 
-Your second project will be a website that you will build from scrtach or it can be an existing web site that you update. Here is a list of the requirements:
+Build a responsive website with React and Tailwind CSS. It can be something new, or an existing project from a previous course that you rebuild to be responsive. It's planned with wireframes, UX tested, and presented in [class-14](./class-14.md).
 
-- Is repsonsive 
-- Mobile first 
-- Wire frames 
-- Accessible
-- UX Tested
+**Due:** Thu, Oct 8 (class 14) — 35% of your final grade. You must pass Project 2 to pass the course.
 
-## Is Repsonsive 
+## Requirements
 
-Your site should use repsonive design and media queries to adapt to a range of screen sizes from mobile to desktop. 
+Your project must be:
 
-## Mobile First 
+- **Responsive** — works at phone (375px), tablet (768px), and desktop (1280px) widths
+- **Mobile-first** — built for mobile first, with Tailwind `md:` / `lg:` prefixes adding the desktop layout
+- **Built with Tailwind CSS** — responsive prefixes, not vanilla media queries
+- **Navigable on mobile** — a hamburger menu with ARIA on small screens
+- **Accessible** — semantic HTML, alt text, labels, keyboard navigation, Lighthouse accessibility ≥ 90
+- **Planned and UX tested** — built from your wireframes, with the changes from your UX test applied (A4)
+- **Deployed** — live at a public URL, with the code on GitHub
 
-You should plan and design your site for Mobile platforms first and adapt it to other platforms using screen sizes using media queries and responsive techniques. 
+---
 
-## Wire Frames 
+## Rubric
 
-You must plan your project and draw it out using wire frames first! 
+To pass, every category must be **Meets** or **Exceeds**. A **Does not meet** in any category is a requirement to fix before you submit.
 
-## Accessible
+| Category | Does not meet | Meets | Exceeds |
+|----------|--------------|-------|---------|
+| **Responsive layout** | Horizontal scroll or content cut off at 375px, or desktop is a stretched phone layout | No overflow at 375 / 768 / 1280px; at least one layout changes between mobile and desktop | Layout is tuned at each size — spacing, type, and column counts all change on purpose |
+| **Mobile-first Tailwind** | Vanilla media queries, or desktop-first classes (`max-md:`) throughout | Base classes are the mobile layout; `sm:` / `md:` / `lg:` add larger-screen changes; spacing uses the Tailwind scale | Uses modern CSS where it fits — `clamp()` type, `dvh`, or container queries — and can explain why |
+| **Navigation** | No working nav on mobile, or hamburger doesn't open/close | Hamburger opens and closes on mobile, has `aria-label` and updating `aria-expanded`, full nav shown on desktop | Menu is fully keyboard-usable, closes on link click / Escape / outside click, focus is managed |
+| **Accessibility** | Lighthouse accessibility below 90, or images missing alt text / inputs missing labels | Lighthouse ≥ 90 on every page; alt text, labels, and `aria-label` on icon buttons present; Tab works through the page with visible focus | 95+ on every page; semantic landmarks (`header`, `nav`, `main`, `footer`); contrast checked beyond Lighthouse |
+| **Touch and mobile UX** | Tap targets too small or text unreadable without zooming at 375px | Buttons and links ≥ 44px tall; no text smaller than ~14px on mobile; tested on a real phone | Forms (if any) use the right input types and `autocomplete`; no layout jumps when the phone's address bar moves |
+| **Plan → Build** | Site doesn't match the wireframes; UX test changes not applied | Every wireframe page is built; site matches the wireframes at mobile and desktop; the 2–3 UX test changes are visible in the site | Can explain each change from wireframe to final build and the reason for it |
+| **Code and deployment** | Not deployed, or console errors, or everything in one file | Live URL works; repo is pushed and the README has the live URL; components are split clearly; no console errors or commented-out blocks | Clean commit history; README explains the project, how to run it, and what changed after UX testing |
 
-Your site should accessible. 
+---
 
-## UX Tested
+## Requirements Checklist
 
-You will implement a user experience test for your project and apply the results to your finished project. 
+Use this checklist to find out where you stand on each rubric category. It's what you'll use in the class-13 peer review, and it's what you should run against your own project before you submit.
 
-## Getting Started! 
+Mark each item pass or fail — no partial credit, no "sort of." If something isn't clearly working, it fails. Check the code and the DOM, not just what you see on screen.
+
+### Responsive layout
+
+- [ ] Works at 375px — no horizontal scroll, no content cut off
+- [ ] Works at 768px — nothing awkward in the in-between size
+- [ ] Works at 1280px — layout uses available space, not a stretched phone layout
+- [ ] At least one layout changes between mobile and desktop (column count, stack to row, etc.)
+- [ ] No fixed pixel widths causing overflow on mobile
+
+### Mobile-first Tailwind
+
+- [ ] Base classes are the mobile layout, `md:` / `lg:` add the desktop changes
+- [ ] Tailwind responsive prefixes used — not vanilla CSS media queries
+- [ ] No hardcoded pixel values that should be Tailwind spacing scale
+- [ ] Utility classes are legible — not a wall of 30+ classes on one element without reason
+
+### Navigation
+
+- [ ] Hamburger menu appears on mobile and opens and closes
+- [ ] Menu button has `aria-label` and `aria-expanded` that updates (check in the Elements panel)
+- [ ] Menu is reachable and usable with the keyboard (Tab to it, Enter to open)
+- [ ] Desktop shows the full nav — no hamburger at 1280px
+
+### Accessibility
+
+- [ ] All images have `alt` text (check the DOM)
+- [ ] All form inputs (if any) have visible labels above the input
+- [ ] Icon-only buttons have `aria-label`
+- [ ] Lighthouse accessibility score ≥ 90 on every page
+- [ ] Can Tab through the page without getting stuck, and focus is visible
+
+### Touch and mobile UX
+
+- [ ] Buttons and links are at minimum 44px tall
+- [ ] Text is readable at 375px without zooming
+- [ ] No text smaller than ~14px on mobile
+- [ ] Tested on a real phone, not just DevTools
+
+### Plan → Build
+
+- [ ] Each page in the wireframes exists in the site
+- [ ] The layout matches the wireframes at mobile and desktop (or the change is a deliberate improvement the author can explain)
+- [ ] Each of the 2–3 changes from the UX test summary is visible in the site — point to where
+
+### Code and deployment
+
+- [ ] Live URL works
+- [ ] Latest work is pushed to GitHub, and the README has the live URL
+- [ ] Component structure is clear — not everything in one file
+- [ ] No console errors in the browser
+- [ ] No commented-out code blocks left in
+
+---
+
+## Submit
+
+Submit to Gradescope by class 14:
+
+1. Your **live URL**
+2. Your **GitHub repo link**
+3. A **self-assessment**: your rating (Does not meet / Meets / Exceeds) for each rubric category, with one sentence of evidence for each
+
+---
+
+## Planning Guide
+
+Use this guide when you plan your project in [class-10](./class-10.md). Your content map, user stories, and wireframes are submitted with A4.
 
 ### Create a site map
 
@@ -66,4 +143,3 @@ You will implement a user experience test for your project and apply the results
 9. **Review for Consistency**: Ensure consistency in design elements and alignment throughout the wireframes.
 10. **Finalize and Share**: Once approved, finalize the wireframes and share with the development team as a blueprint for implementation.
 
-## Submit your content map, users stories, and wireframes to gradescope!
