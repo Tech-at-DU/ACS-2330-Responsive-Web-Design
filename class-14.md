@@ -7,6 +7,7 @@ This is the last class. Each student presents Project 2. Presentations are short
 - Present Project 2 on both mobile and desktop
 - Articulate one specific technical decision you made
 - Identify what you'd do differently with more time
+- Complete the final assessment: make a small app responsive and accessible on your own
 
 ---
 
@@ -73,6 +74,14 @@ After everyone has presented, we'll take 15 minutes for group reflection:
 - What concept from this course will you use most in your work going forward?
 
 There are no wrong answers. This is a chance to hear how other people approached the same problems.
+
+---
+
+## Final Assessment (45 min)
+
+After reflection, you'll complete a short in-class assessment: take an unstyled image editing app and make it responsive (mobile, tablet, desktop) and accessible. It pulls together media queries, Flexbox/Grid, responsive forms, and accessibility from this course.
+
+Instructions, layouts, and grading: [final-assessment/readme.md](./final-assessment/readme.md). Starter files: [final-assessment/Archive.zip](./final-assessment/Archive.zip). Submit to Gradescope before the end of class.
 
 ---
 

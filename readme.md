@@ -45,7 +45,7 @@ Students by the end of the course will be able to:
 | 12 | Thu, Oct 1 | [Fluid Typography and Modern CSS] | |
 | **–** | **Week 7** | **Final** | |
 | 13 | Tue, Oct 6 | [Project 2 Lab] | |
-| 14 | Thu, Oct 8 | [Final Presentations] | [A5 — Project 2] due |
+| 14 | Thu, Oct 8 | [Final Presentations] + [Final Assessment] | [A5 — Project 2] due |
 
 [Introduction to Responsive Web Design]: ./class-1.md
 [Wireframes to Code]: ./class-2.md
@@ -61,6 +61,7 @@ Students by the end of the course will be able to:
 [Fluid Typography and Modern CSS]: ./class-12.md
 [Project 2 Lab]: ./class-13.md
 [Final Presentations]: ./class-14.md
+[Final Assessment]: ./final-assessment/readme.md
 
 [A1 — SFPOPOS Wireframes]: ./class-2.md#assess-your-work
 [A2 — Grid Challenge]: https://github.com/Tech-at-DU/responsive-web-design-challenge
